@@ -21,12 +21,12 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { FormsModule } from '@angular/forms';
-
-
 import { MatTableModule } from '@angular/material/table';
+import { MatRadioModule } from '@angular/material/radio';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTabsModule } from '@angular/material/tabs';
 import { HomeComponent } from './layout/home/home.component';
+import { ClientRegisterFormComponent } from './client-register/client-register-form/client-register-form.component';
 
 
 
@@ -35,7 +35,8 @@ import { HomeComponent } from './layout/home/home.component';
     AppComponent,
     NavbarComponent,
     LoginComponent,
-   HomeComponent
+    HomeComponent,
+    ClientRegisterFormComponent
 
     
   ],
@@ -45,6 +46,7 @@ import { HomeComponent } from './layout/home/home.component';
     AppRoutingModule,
     MatInputModule,
     MatFormFieldModule,
+    MatButtonModule,
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
@@ -57,10 +59,10 @@ import { HomeComponent } from './layout/home/home.component';
     MatNativeDateModule,
     MatDatepickerModule,
     BrowserAnimationsModule,
-   MatTableModule,
-   MatDialogModule,
-   MatTabsModule
-  
+    MatTableModule,
+    MatDialogModule,
+    MatTabsModule,
+    MatRadioModule
     
   ],
   providers: [

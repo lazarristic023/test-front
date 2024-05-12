@@ -1,0 +1,55 @@
+.wrap {
+    background: url("https://cioafrica.co/wp-content/uploads/2024/01/cyber-security.jpeg") center center/cover no-repeat;
+    background-size: cover;
+    width: 100%;
+    min-height: 1050px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .form-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    align-items: center;
+  }
+  
+  .first-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    max-width: 400px; /* Adjust as needed */
+  }
+  
+  .input-field {
+    width: 100%;
+  }
+  
+  .button1 {
+    margin-top: 20px;
+    border-radius: 8px;
+    background-color: #084d4f;
+    color: #ffffff;
+    padding: 10px 20px;
+    width: 100%;
+    font-style: "Gill Sans Extrabold", sans-serif;
+    font-size: 18px;
+  }
+  
+  .title {
+    font-size: 1.7em;
+    text-transform: uppercase;
+    color: #084d4f;
+    font-style: "Gill Sans Extrabold", sans-serif;
+    background-color: rgba(246, 245, 245, 0.8);
+    border-radius: 10px;
+    padding: 5px 10px;
+    margin-top: 5px;
+    white-space: nowrap;
+  }
+
+
+  
