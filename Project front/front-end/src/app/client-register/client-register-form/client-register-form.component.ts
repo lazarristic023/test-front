@@ -89,6 +89,18 @@ export class ClientRegisterFormComponent {
     this.clientService.registerClient(client).subscribe( {
       next:(res)=>{
           console.log('successfull',res)
+          this.sendRequest(client.username);
+      },
+      error:(err)=>{
+        console.log('greska',err)
+      }
+    });
+  }
+
+  sendRequest(username: string): void {
+    this.clientService.sendRequest(username).subscribe( {
+      next:(res)=>{
+          console.log('successfull',res)
           //this.router.navigate(['home'])
       },
       error:(err)=>{
