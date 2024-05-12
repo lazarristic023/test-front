@@ -27,6 +27,9 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatTabsModule } from '@angular/material/tabs';
 import { HomeComponent } from './layout/home/home.component';
 import { ClientRegisterFormComponent } from './client-register/client-register-form/client-register-form.component';
+import { AllRequestsComponent } from './requests/all-requests/all-requests.component';
+import { EmailComponent } from './email/email/email.component';
+import { RejectDialogComponent } from './dialog/reject-dialog/reject-dialog.component';
 
 
 
@@ -36,7 +39,10 @@ import { ClientRegisterFormComponent } from './client-register/client-register-f
     NavbarComponent,
     LoginComponent,
     HomeComponent,
-    ClientRegisterFormComponent
+    ClientRegisterFormComponent,
+   AllRequestsComponent,
+   EmailComponent,
+   RejectDialogComponent
 
     
   ],
