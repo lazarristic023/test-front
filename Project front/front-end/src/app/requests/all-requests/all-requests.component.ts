@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { RequestService } from '../request.service';
 import { MatDialog } from '@angular/material/dialog';
 import { RejectDialogComponent } from 'src/app/dialog/reject-dialog/reject-dialog.component';
+import { Requestt } from 'src/app/model/requestt.model';
 
 @Component({
   selector: 'app-all-requests',
@@ -11,7 +12,7 @@ import { RejectDialogComponent } from 'src/app/dialog/reject-dialog/reject-dialo
 export class AllRequestsComponent {
 
   message: String=""
-  requests:Request[]=[]
+  requests:Requestt[]=[]
   constructor(private requestService:RequestService,private dialog:MatDialog ){
     this.getAllRequests()
   }
@@ -28,7 +29,7 @@ export class AllRequestsComponent {
     })
   }
 
-  accept(request:Request){
+  accept(request:Requestt){
     this.requestService.acceptRequest(request).subscribe({
       next:(res)=>{
          this.getAllRequests();
@@ -39,7 +40,7 @@ export class AllRequestsComponent {
     })
   }
 
-  reject(request:Request){
+  reject(request:Requestt){
 
     const dialogRef = this.dialog.open(RejectDialogComponent);
 
