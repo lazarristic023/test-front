@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { ClientService } from 'src/app/service/client-service.service';
 
 @Component({
@@ -16,8 +16,8 @@ export class ClientRegisterFormComponent {
     this.userForm = this.formBuilder.group({
       username: ['', Validators.required],
       userType: [false, Validators.required],
-      email: ['', Validators.required],
-      password: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6), this.passwordStrengthValidator()]],
       confirmPassword: ['', Validators.required],
       name: ['', Validators.required],
       surname: ['', Validators.required],
@@ -25,8 +25,47 @@ export class ClientRegisterFormComponent {
       city: ['', Validators.required],
       country: ['', Validators.required],
       phone: ['', Validators.required],
-      packageType: ['', Validators.required],
+      packageType: ['BASIC', Validators.required],
+    }, {
+      validator: [ this.passwordMatchValidator, this.passwordStrengthValidator]
     });
+
+    // Pretplata na promene u formi
+    this.userForm.get('packageType')?.valueChanges.subscribe((value) => {
+      console.log('Izabran paket:', value);
+      // Ovde možete dodati dodatne radnje koje treba da se izvrše kada se izabere paket
+      this.packageType = value;
+    });
+
+  }
+
+  passwordMatchValidator(formGroup: FormGroup) {
+    var a = formGroup.get('password');
+    var b = formGroup.get('confirmPassword');
+    const password = a;
+    const confirmPassword = b;
+  
+    if (password && confirmPassword) {
+      const match = password.value === confirmPassword.value;
+      if (!match) {
+        confirmPassword.setErrors({ passwordMismatch: true });
+      } else {
+        confirmPassword.setErrors(null);
+      }
+    }
+  
+    return null;
+  }
+
+  // Validator za proveru jačine lozinke
+  passwordStrengthValidator(): ValidatorFn {
+    return (control: AbstractControl): { [key: string]: boolean } | null => {
+      const value = control.value;
+      if (!/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/.test(value)) {
+        return { 'passwordStrength': true };
+      }
+      return null;
+    };
   }
 
   register(): void {
