@@ -10,5 +10,6 @@ export class Client {
   country: string | undefined;
   phone: string | undefined;
   type: string | undefined;
+  packageType: string | undefined;
 }
   

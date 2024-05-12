@@ -10,9 +10,11 @@ import { ClientService } from 'src/app/service/client-service.service';
 export class ClientRegisterFormComponent {
   isLegalEntity: boolean = false;
   userForm: FormGroup;
+  packageType: string | undefined;
 
   constructor(private formBuilder: FormBuilder, private clientService: ClientService) {
     this.userForm = this.formBuilder.group({
+      username: ['', Validators.required],
       userType: [false, Validators.required],
       email: ['', Validators.required],
       password: ['', Validators.required],
@@ -22,7 +24,8 @@ export class ClientRegisterFormComponent {
       address: ['', Validators.required],
       city: ['', Validators.required],
       country: ['', Validators.required],
-      phone: ['', Validators.required]
+      phone: ['', Validators.required],
+      packageType: ['', Validators.required],
     });
   }
 
@@ -38,8 +41,11 @@ export class ClientRegisterFormComponent {
       city: this.userForm.value.city || '',
       country: this.userForm.value.country || '',
       phone: this.userForm.value.phone || '',
-      type: this.isLegalEntity ? 'LEGALLY' : 'PHYSICALLY'
+      type: this.userForm.get('userType')?.value ? 'LEGALLY' : 'PHYSICALLY',
+      packageType: this.packageType
     };
+
+    console.log(client.package)
 
     this.clientService.registerClient(client).subscribe( {
       next:(res)=>{
