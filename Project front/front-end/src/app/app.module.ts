@@ -27,6 +27,9 @@ import { MatTableModule } from '@angular/material/table';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTabsModule } from '@angular/material/tabs';
 import { HomeComponent } from './layout/home/home.component';
+import { AllRequestsComponent } from './requests/all-requests/all-requests.component';
+import { EmailComponent } from './email/email/email.component';
+import { RejectDialogComponent } from './dialog/reject-dialog/reject-dialog.component';
 
 
 
@@ -35,7 +38,10 @@ import { HomeComponent } from './layout/home/home.component';
     AppComponent,
     NavbarComponent,
     LoginComponent,
-   HomeComponent
+   HomeComponent,
+   AllRequestsComponent,
+   EmailComponent,
+   RejectDialogComponent
 
     
   ],

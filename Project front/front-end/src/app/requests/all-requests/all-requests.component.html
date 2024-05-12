@@ -1,0 +1,20 @@
+
+<table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Client ID</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let request of requests">
+        <td>{{ request}}</td>
+        <td>{{ request}}</td>
+        <td>{{ request }}</td>
+        <td><button (click)="accept(request)">ACCEPT</button></td>
+        <td><button (click)="reject(request)">REJECT</button></td>
+      </tr>
+    </tbody>
+  </table>
+  
