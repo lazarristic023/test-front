@@ -9,9 +9,9 @@
     </thead>
     <tbody>
       <tr *ngFor="let request of requests">
-        <td>{{ request}}</td>
-        <td>{{ request}}</td>
-        <td>{{ request }}</td>
+        <td>{{ request.id}}</td>
+        <td>{{ request.clientId}}</td>
+        <td>{{ request.status }}</td>
         <td><button (click)="accept(request)">ACCEPT</button></td>
         <td><button (click)="reject(request)">REJECT</button></td>
       </tr>

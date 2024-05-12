@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { BehaviorSubject, catchError, map, Observable, of } from 'rxjs';
+import { Requestt } from '../model/requestt.model';
 @Injectable({
   providedIn: 'root'
 })
@@ -13,30 +14,40 @@ export class RequestService {
     
   }
 
-  getRequests(): Observable<Request[]> {
+  getRequests(): Observable<[]> {
     const token = this.jwtHelper.tokenGetter();
     const headers = new HttpHeaders({
       Authorization: 'Bearer ' + token,
       'Content-Type': 'application/json',
     });
-    return this.http.get<Request[]>('http://localhost:8081/api/requests/getAll' ,{headers});
+    return this.http.get<[]>('http://localhost:8081/api/requests/getAll' ,{headers});
   }
 
-  acceptRequest(request:Request): Observable<Request> {
+  acceptRequest(request:Requestt): Observable<Requestt> {
     const token = this.jwtHelper.tokenGetter();
     const headers = new HttpHeaders({
       Authorization: 'Bearer ' + token,
       'Content-Type': 'application/json',
     });
-    return this.http.put<Request>('http://localhost:8081/api/requests/accept',request ,{headers});
+    return this.http.put<Requestt>('http://localhost:8081/api/requests/accept',request ,{headers});
   }
 
-  rejectRequest(request:Request,reason:String): Observable<Request> {
+  rejectRequest(request:Requestt,reason:String): Observable<Requestt> {
     const token = this.jwtHelper.tokenGetter();
     const headers = new HttpHeaders({
       Authorization: 'Bearer ' + token,
       'Content-Type': 'application/json',
     });
-    return this.http.put<Request>('http://localhost:8081/api/requests/reject/'+reason,request ,{headers});
+    return this.http.put<Requestt>('http://localhost:8081/api/requests/reject/'+reason,request ,{headers});
   }
+
+  getRequestByClientId(id:number): Observable<Requestt> {
+    const token = this.jwtHelper.tokenGetter();
+    const headers = new HttpHeaders({
+      Authorization: 'Bearer ' + token,
+      'Content-Type': 'application/json',
+    });
+    return this.http.get<Requestt>('http://localhost:8081/api/requests/getByClientId/'+id ,{headers});
+  }
+  
 }
