@@ -12,10 +12,10 @@ import { Requestt } from 'src/app/model/requestt.model';
 })
 export class LoginComponent {
 
-  role:String=""
-
-  request!:Requestt
-  constructor(private authService:AuthService,private router:Router,private requestService:RequestService){}
+  role: String = ""
+  emailChecked: boolean = false
+  request!: Requestt
+  constructor(private authService: AuthService, private router: Router, private requestService: RequestService) { }
   userForm = new FormGroup({
     username: new FormControl('', [Validators.required]),
     password: new FormControl('', [Validators.required]),
@@ -28,95 +28,55 @@ export class LoginComponent {
 
       password: this.userForm.value.password || '',
     };
-    this.authService.login(user).subscribe( {
-      next:(res)=>{
-          console.log('successfull',res)
+    this.authService.login(user).subscribe({
+      next: (res) => {
+        console.log('successfull', res)
 
-      
-         if(this.canUserLogin()){
-            this.router.navigate(['home']);
-          }
 
-          const id=this.authService.getUserId();
-    this.role=this.authService.getUserRole();
-    if(this.role=="CLIENT"){
-      console.log('clieent')
-      //ako je zahtjev odbijen ne moze se logovati
-      this.requestService.getRequestByClientId(id).subscribe({
-        next:(res)=>{
-        this.request=res
-          console.log(res)
-          if(res!=null){
-           if(this.request.status=="ACCEPTED"){
-            alert('Request accepted')
-            this.router.navigate(['home']);
-           }else{
-            alert('Request rejected')
-           
-           }
-          }else{
-            alert("Request never created")
-           
-          }
-        },
-        error:(err)=>{
-          console.log(err)
+
+        const id = this.authService.getUserId();
+        this.role = this.authService.getUserRole();
+        if (this.role == "CLIENT") {
+          console.log('clieent')
+            if(this.isEmailChecked(id)){
+              this.router.navigate(['home']);
+            }else{
+              alert("You cannot login")
+            }
+
+        } else {
+          console.log('nije klijent')
+          this.router.navigate(['home']);
         }
-      })
 
-    }else{
-      console.log('nije klijent')
-      this.router.navigate(['home']);
-    }
-         
-          
+
       },
-      error:(err)=>{
-        console.log('greska',err)
+      error: (err) => {
+        console.log('greska', err)
       }
-      
-     
-     
-    
+
+
+
+
     });
 
 
   }
 
-  canUserLogin():boolean{
-    const id=this.authService.getUserId();
-    this.role=this.authService.getUserRole();
-    if(this.role=="CLIENT"){
-      console.log('clieent')
-      //ako je zahtjev odbijen ne moze se logovati
-      this.requestService.getRequestByClientId(id).subscribe({
-        next:(res)=>{
-        this.request=res
-          console.log(res)
-          if(res!=null){
-           if(this.request.status=="ACCEPTED"){
-            alert('Request accepted')
-            return true;
-           }else{
-            alert('Request rejected')
-            return false
-           }
-          }else{
-            alert("Request never created")
-            return false;
-          }
-        },
-        error:(err)=>{
-          console.log(err)
-        }
-      })
 
-    }else{
-      console.log('nije klijent')
-      return true;
+  isEmailChecked(id: number): Boolean {
+
+    this.authService.isEmailChecked(id).subscribe({
+      next: (res) => {
+        this.emailChecked = res as boolean
+      }
+    })
+
+    if (this.emailChecked) {
+      return true
+    } else {
+      return false
     }
-
-    return false;
   }
 
 }

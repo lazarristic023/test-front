@@ -77,4 +77,13 @@ export class AuthService {
   }
 
  
+  isEmailChecked(id:number): Observable<Boolean> {
+    const token = this.jwtHelper.tokenGetter();
+    const headers = new HttpHeaders({
+      Authorization: 'Bearer ' + token,
+      'Content-Type': 'application/json',
+    });
+    return this.http.get<Boolean>('http://localhost:8081/api/authentication/isEmailChecked/'+ id ,{headers});
+  }
+ 
 }

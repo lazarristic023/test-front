@@ -30,6 +30,7 @@ import { HomeComponent } from './layout/home/home.component';
 import { AllRequestsComponent } from './requests/all-requests/all-requests.component';
 import { EmailComponent } from './email/email/email.component';
 import { RejectDialogComponent } from './dialog/reject-dialog/reject-dialog.component';
+import { LinkInvalidComponent } from './email/link-invalid/link-invalid.component';
 
 
 
@@ -41,7 +42,8 @@ import { RejectDialogComponent } from './dialog/reject-dialog/reject-dialog.comp
    HomeComponent,
    AllRequestsComponent,
    EmailComponent,
-   RejectDialogComponent
+   RejectDialogComponent,
+   LinkInvalidComponent
 
     
   ],
