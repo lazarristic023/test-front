@@ -30,6 +30,7 @@ import { ClientRegisterFormComponent } from './client-register/client-register-f
 import { AllRequestsComponent } from './requests/all-requests/all-requests.component';
 import { EmailComponent } from './email/email/email.component';
 import { RejectDialogComponent } from './dialog/reject-dialog/reject-dialog.component';
+import { ClientProfileComponent } from './client-profile/client-profile/client-profile.component';
 
 
 
@@ -42,7 +43,8 @@ import { RejectDialogComponent } from './dialog/reject-dialog/reject-dialog.comp
     ClientRegisterFormComponent,
    AllRequestsComponent,
    EmailComponent,
-   RejectDialogComponent
+   RejectDialogComponent,
+   ClientProfileComponent
 
     
   ],
