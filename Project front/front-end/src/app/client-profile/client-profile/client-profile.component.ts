@@ -16,15 +16,32 @@ export class ClientProfileComponent implements OnInit {
   commercials: Commercial[] = [];
   client: Client = new Client();
   editMode: any = {};
+  inputUsername: boolean = false;
+  usernameValue: string = '';
+  inputEmail: boolean = false;
+  emailValue: string = '';
+  inputFirstName: boolean = false;
+  firstNameValue: string = '';
+  inputLastName: boolean = false;
+  lastNameValue: string = '';
+  inputAddress: boolean = false;
+  addressValue: string = '';
+  inputCity: boolean = false;
+  cityValue: string = '';
+  inputCountry: boolean = false;
+  countryValue: string = '';
+  inputPhone: boolean = false;
+  phoneValue: string = '';
+  userId: number | undefined;
 
 
   constructor(private formBuilder: FormBuilder, private authService: AuthService, private clientService: ClientService) { }
 
   ngOnInit(): void {
-    this.getCommercials()
-    this.getClient();
     this.initForm();
+    this.getCommercials();
   }
+
 
   private getClient(): void {
     this.clientService.getClientData(this.authService.getUserId()).subscribe( {
@@ -41,6 +58,7 @@ export class ClientProfileComponent implements OnInit {
     this.clientService.getClientCommercials(this.authService.getUserId()).subscribe( {
       next:(res)=>{
           this.commercials = res;
+          this.getClient();
       },
       error:(err)=>{
         console.log('nije ucitao reklame',err)
@@ -108,11 +126,83 @@ export class ClientProfileComponent implements OnInit {
     }
   }
 
-  enableEditMode(field: string): void {
-    this.editMode[field] = true; // Kada se pozove funkcija enableEditMode, postavićemo odgovarajući ključ u editMode objektu na true
+  editUsername(): void {
+    //this.clientService.updateEmail(this.authService.getUserId(), this.emailValue);
   }
 
-  toggleEditMode(field: string): void {
-    this.editMode[field] = !this.editMode[field]; // Kada se pozove funkcija toggleEditMode, promenićemo vrednost ključa u editMode objektu
+  editEmail(): void {
+    this.clientService.updateEmail(this.authService.getUserId(), this.emailValue);
+    location.reload()
+  }
+
+  editFirstName(): void {
+    console.log(this.firstNameValue);
+    this.clientService.updateName(this.authService.getUserId(), this.firstNameValue);
+    //location.reload()
+  }
+
+  editLastName(): void {
+    this.clientService.updateSurname(this.authService.getUserId(), this.lastNameValue);
+    location.reload()
+  }
+
+  editAddress(): void {
+    this.clientService.updateAddress(this.authService.getUserId(), this.addressValue);
+    location.reload()
+  }
+
+  editCity(): void {
+    this.clientService.updateCity(this.authService.getUserId(), this.cityValue);
+    location.reload()
+  }
+
+  editCountry(): void {
+    this.clientService.updateCountry(this.authService.getUserId(), this.countryValue);
+    location.reload()
+  }
+
+  editPhone(): void {
+    this.clientService.updatePhone(this.authService.getUserId(), this.phoneValue);
+    location.reload()
+  }
+
+  onUsernameInput(event: any): void {
+    this.usernameValue = event.target.value; // Čuvanje vrednosti input polja
+    this.inputUsername = true; // Postavljanje na true kada korisnik počne kucati
+  }
+
+  onEmailInput(event: any): void {
+    this.emailValue = event.target.value; // Čuvanje vrednosti input polja
+    this.inputEmail = true; // Postavljanje na true kada korisnik počne kucati
+  }
+
+  onFirstNameInput(event: any): void {
+    this.firstNameValue = event.target.value; // Čuvanje vrednosti input polja
+    this.inputFirstName = true; // Postavljanje na true kada korisnik počne kucati
+  }
+
+  onLastNameInput(event: any): void {
+    this.lastNameValue = event.target.value; // Čuvanje vrednosti input polja
+    this.inputLastName = true; // Postavljanje na true kada korisnik počne kucati
+  }
+
+  onAddressInput(event: any): void {
+    this.addressValue = event.target.value; // Čuvanje vrednosti input polja
+    this.inputAddress = true; // Postavljanje na true kada korisnik počne kucati
+  }
+
+  onCityInput(event: any): void {
+    this.cityValue = event.target.value; // Čuvanje vrednosti input polja
+    this.inputCity = true; // Postavljanje na true kada korisnik počne kucati
+  }
+
+  onCountryInput(event: any): void {
+    this.countryValue = event.target.value; // Čuvanje vrednosti input polja
+    this.inputCountry = true; // Postavljanje na true kada korisnik počne kucati
+  }
+
+  onPhoneInput(event: any): void {
+    this.phoneValue = event.target.value; // Čuvanje vrednosti input polja
+    this.inputPhone = true; // Postavljanje na true kada korisnik počne kucati
   }
 }
