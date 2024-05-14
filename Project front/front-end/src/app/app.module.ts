@@ -20,12 +20,12 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { FormsModule } from '@angular/forms';
-
-
 import { MatTableModule } from '@angular/material/table';
+import { MatRadioModule } from '@angular/material/radio';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTabsModule } from '@angular/material/tabs';
 import { HomeComponent } from './layout/home/home.component';
+import { ClientRegisterFormComponent } from './client-register/client-register-form/client-register-form.component';
 import { AllRequestsComponent } from './requests/all-requests/all-requests.component';
 import { EmailComponent } from './email/email/email.component';
 import { RejectDialogComponent } from './dialog/reject-dialog/reject-dialog.component';
@@ -38,7 +38,8 @@ import { TokenInterceptor } from './infrastructure/interceptor/TokenInterceptor'
     AppComponent,
     NavbarComponent,
     LoginComponent,
-   HomeComponent,
+    HomeComponent,
+    ClientRegisterFormComponent,
    AllRequestsComponent,
    EmailComponent,
    RejectDialogComponent
@@ -51,6 +52,7 @@ import { TokenInterceptor } from './infrastructure/interceptor/TokenInterceptor'
     AppRoutingModule,
     MatInputModule,
     MatFormFieldModule,
+    MatButtonModule,
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
@@ -63,10 +65,10 @@ import { TokenInterceptor } from './infrastructure/interceptor/TokenInterceptor'
     MatNativeDateModule,
     MatDatepickerModule,
     BrowserAnimationsModule,
-   MatTableModule,
-   MatDialogModule,
-   MatTabsModule
-  
+    MatTableModule,
+    MatDialogModule,
+    MatTabsModule,
+    MatRadioModule
     
   ],
   providers: [
