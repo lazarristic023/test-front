@@ -1,107 +1,95 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { BehaviorSubject, catchError, map, Observable, of } from 'rxjs';
 import { RefreshTokenRequest } from 'src/app/model/refreshTokenRequest.model';
-
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  private access_token: string | null = null;
-  private refresh_token: string | null = null;
-  private userClaims: any | null = null;
-  private refreshTokenInProgress = false;
-  private refreshTokenSubject: BehaviorSubject<any> = new BehaviorSubject<any>(null);
-
+  private access_token = null;
+  userClaims: any = null;
+  
+  refreshTokenRequest:RefreshTokenRequest={
+    refreshToken: '',
+    username: '',
+    password: ''
+  }
   private loginSource = new BehaviorSubject<boolean>(false);
   public loginObserver = this.loginSource.asObservable();
 
+  public passChangeSource = new BehaviorSubject<boolean>(false);
+  public passChangeObserver = this.passChangeSource.asObservable();
+
   constructor(private http: HttpClient, private jwtHelper: JwtHelperService) {
+    //localStorage.clear();
     this.userClaims = this.jwtHelper.decodeToken();
     if (this.userClaims) this.loginSource.next(true);
-
-    this.access_token = localStorage.getItem('access_token');
-    this.refresh_token = localStorage.getItem('refresh_token');
   }
 
-  login(loginRequest: Credential): Observable<any> {
-    console.log('u servisu', loginRequest);
+ 
+
+  login(loginRequest: Credential): Observable<boolean> {
+    console.log('u servisu',loginRequest)
     return this.http
       .post<any>('http://localhost:8081/api/authentication/login', loginRequest)
       .pipe(
-        tap((res) => {
+        map((res) => {
           console.log('Login success');
           console.log(res);
-          this.storeTokens(res.access_token, res.refresh_token);
+          localStorage.setItem('token', res.accessToken);
+          localStorage.setItem('refreshToken', res.refreshToken); 
           this.userClaims = this.jwtHelper.decodeToken();
-          console.log('userclaims', this.userClaims);
+          console.log('userclaims',this.userClaims)
+          this.getUserId()
+          this.getUsername()
+          this.access_token = res.token;
           this.loginSource.next(true);
+          return true;
         })
       );
   }
-  
+
   logout(): void {
     localStorage.clear();
     this.loginSource.next(false);
   }
 
   isLogged(): boolean {
-    return !!this.access_token && !this.jwtHelper.isTokenExpired(this.access_token);
+    if (!this.jwtHelper.tokenGetter()) return false;
+    return true;
   }
 
   getUserRole(): string {
-    return this.userClaims?.role || '';
+    return this.userClaims.role;
+  }
+  tokenIsPresent() {
+    return this.access_token != undefined && this.access_token != null;
   }
 
-  getUserId(): number {
-    return this.userClaims?.id || 0;
-  }
-
-  getUsername(): string {
-    return this.userClaims?.username || '';
-  }
-
-  getAccessToken(): string | null {
+  getAccessToken() {
     return this.access_token;
   }
 
-  refreshTokenIfNeeded(): Observable<any> {
-    if (this.refreshTokenInProgress) {
-      return this.refreshTokenSubject.pipe(
-        tap(() => {
-          this.refreshTokenSubject.next(null);
-        })
-      );
-    } else {
-      if (this.access_token && this.jwtHelper.isTokenExpired(this.access_token)) {
-        this.refreshTokenInProgress = true;
-        this.refreshTokenSubject.next(null);
-        console.log("Mijenjano: ");
-        return this.http.post<any>('http://localhost:8081/api/authentication/refresh-token', {
-          refreshToken: this.refresh_token,
-          username: this.getUsername(),
-          password: 'password'
-        }).pipe(
-          
-          tap((res) => {
-            this.storeTokens(res.access_token, res.refresh_token);
-            this.refreshTokenInProgress = false;
-            console.log("Mijenjano: ",res);
-          })
-        );
-      } else {
-        return this.refreshTokenSubject;
-      }
-    }
+  
+  getUserId(): number {
+    console.log('id',this.userClaims.id)
+    return this.userClaims.id;
   }
 
-  private storeTokens(access_token: string, refresh_token: string): void {
-    localStorage.setItem('access_token', access_token);
-    localStorage.setItem('refresh_token', refresh_token);
-    this.access_token = access_token;
-    this.refresh_token = refresh_token;
+  getUsername(): string {
+    console.log("ooooo",this.userClaims.username);
+    return this.userClaims.username;
+    
   }
+
+  refreshToken(refreshTokenRequest: RefreshTokenRequest): Observable<RefreshTokenRequest> {
+    console.log("POzvana metoda");
+    console.log("Refresh token", refreshTokenRequest.refreshToken);
+    console.log("Access token", localStorage.getItem('token'));
+    return this.http.post<RefreshTokenRequest>('http://localhost:8081/api/authentication/refresh-token', refreshTokenRequest);
+  }
+  
+ 
 }

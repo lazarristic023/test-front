@@ -1,5 +1,5 @@
 export interface RefreshTokenRequest{
-    refreshToken:String,
+    refreshToken:string,
     username:string,
     password:string
 }

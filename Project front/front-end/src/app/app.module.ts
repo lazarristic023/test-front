@@ -12,7 +12,6 @@ import { MatInput, MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButton, MatButtonModule } from '@angular/material/button';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { TokenInterceptor } from './infrastructure/interceptor/TokenInterceptor';
 import { DateAdapter } from '@angular/material/core';
 
 import { MatSelectModule } from '@angular/material/select';
@@ -30,6 +29,7 @@ import { HomeComponent } from './layout/home/home.component';
 import { AllRequestsComponent } from './requests/all-requests/all-requests.component';
 import { EmailComponent } from './email/email/email.component';
 import { RejectDialogComponent } from './dialog/reject-dialog/reject-dialog.component';
+import { TokenInterceptor } from './infrastructure/interceptor/TokenInterceptor';
 
 
 

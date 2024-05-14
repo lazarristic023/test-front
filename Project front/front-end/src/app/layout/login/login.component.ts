@@ -10,7 +10,9 @@ import { AuthService } from '../../infrastructure/authentication/auth.service';
 })
 export class LoginComponent {
 
-  constructor(private authService:AuthService,private router:Router){}
+  constructor(private authService:AuthService,private router:Router){
+    localStorage.clear();
+  }
   userForm = new FormGroup({
     username: new FormControl('', [Validators.required]),
     password: new FormControl('', [Validators.required]),
