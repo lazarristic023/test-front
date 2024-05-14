@@ -1,0 +1,79 @@
+<div class="wrap">
+    <form [formGroup]="userForm" class="form-wrap">
+      <div class="first-form">
+        <h2 class="title">Client registration</h2>
+  
+        <mat-radio-group formControlName="userType" style="display: flex;">
+          <mat-radio-button [value]="false" style="background-color: white; border-radius: 10px;padding: 5px 10px;margin-bottom: 15px;margin-left:10px;">INDIVIDUAL</mat-radio-button>
+          <mat-radio-button [value]="true" style="background-color: white; border-radius: 10px;padding: 5px 10px;margin-bottom: 15px;margin-left:10px;">LEGALLY</mat-radio-button>
+        </mat-radio-group>
+  
+        <mat-form-field appearance="fill">
+          <mat-label>Email address</mat-label>
+          <input matInput formControlName="email" type="email" required>
+        </mat-form-field>
+  
+        <mat-form-field appearance="fill">
+          <mat-label>Password</mat-label>
+          <input matInput formControlName="password" type="password" required>
+        </mat-form-field>
+
+        <div>
+          <p style="text-align:center;background-color: white;white-space:nowrap;border-radius: 4px; color: #084d4f; margin-top: 5px">Password must contain at least one upper case, one lower case and one number. Minimal length is 6.</p>
+        </div>
+      
+        <mat-form-field appearance="fill">
+          <mat-label>Confirm password</mat-label>
+          <input matInput formControlName="confirmPassword" type="password" required>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Username</mat-label>
+          <input matInput formControlName="username" type="text" required>
+        </mat-form-field>
+  
+        <mat-form-field appearance="fill">
+          <mat-label>{{ userForm.get('userType')?.value ? 'Company name' : 'First name' }}</mat-label>
+          <input matInput formControlName="name" type="text" required>
+        </mat-form-field>
+  
+        <mat-form-field appearance="fill">
+          <mat-label>{{ userForm.get('userType')?.value ? 'Company PIB' : 'Last name' }}</mat-label>
+          <input matInput formControlName="surname" type="text" required>
+        </mat-form-field>
+        
+        <mat-form-field appearance="fill">
+          <mat-label>{{ userForm.get('userType')?.value ? 'Company address' : 'Residential address' }}</mat-label>
+          <input matInput formControlName="address" type="text" required>
+        </mat-form-field>
+  
+        <mat-form-field appearance="fill">
+          <mat-label>City</mat-label>
+          <input matInput formControlName="city" type="text" required>
+        </mat-form-field>
+  
+        <mat-form-field appearance="fill">
+          <mat-label>Country</mat-label>
+          <input matInput formControlName="country" type="text" required>
+        </mat-form-field>
+  
+        <mat-form-field appearance="fill">
+          <mat-label>Phone number</mat-label>
+          <input matInput formControlName="phone" type="tel" required>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Package Type</mat-label>
+          <mat-select formControlName="packageType">
+            <mat-option value="BASIC">Basic Package</mat-option>
+            <mat-option value="STANDARD">Standard Package</mat-option>
+            <mat-option value="GOLD">Gold Package</mat-option>
+          </mat-select>
+        </mat-form-field>
+        
+  
+        <button type="submit" class="button1" (click)="register()">Register</button>
+      </div>
+    </form>
+  </div>
+  

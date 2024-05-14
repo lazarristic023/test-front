@@ -21,15 +21,16 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { FormsModule } from '@angular/forms';
-
-
 import { MatTableModule } from '@angular/material/table';
+import { MatRadioModule } from '@angular/material/radio';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTabsModule } from '@angular/material/tabs';
 import { HomeComponent } from './layout/home/home.component';
+import { ClientRegisterFormComponent } from './client-register/client-register-form/client-register-form.component';
 import { AllRequestsComponent } from './requests/all-requests/all-requests.component';
 import { EmailComponent } from './email/email/email.component';
 import { RejectDialogComponent } from './dialog/reject-dialog/reject-dialog.component';
+import { ClientProfileComponent } from './client-profile/client-profile/client-profile.component';
 import { LinkInvalidComponent } from './email/link-invalid/link-invalid.component';
 import { EmployeeProfileComponent } from './employee/employee-profile/employee-profile.component';
 
@@ -40,10 +41,12 @@ import { EmployeeProfileComponent } from './employee/employee-profile/employee-p
     AppComponent,
     NavbarComponent,
     LoginComponent,
-   HomeComponent,
+    HomeComponent,
+    ClientRegisterFormComponent,
    AllRequestsComponent,
    EmailComponent,
    RejectDialogComponent,
+   ClientProfileComponent
    LinkInvalidComponent,
    EmployeeProfileComponent
 
@@ -55,6 +58,7 @@ import { EmployeeProfileComponent } from './employee/employee-profile/employee-p
     AppRoutingModule,
     MatInputModule,
     MatFormFieldModule,
+    MatButtonModule,
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
@@ -67,10 +71,10 @@ import { EmployeeProfileComponent } from './employee/employee-profile/employee-p
     MatNativeDateModule,
     MatDatepickerModule,
     BrowserAnimationsModule,
-   MatTableModule,
-   MatDialogModule,
-   MatTabsModule
-  
+    MatTableModule,
+    MatDialogModule,
+    MatTabsModule,
+    MatRadioModule
     
   ],
   providers: [
