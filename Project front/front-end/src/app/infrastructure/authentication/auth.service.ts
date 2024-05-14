@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { BehaviorSubject, catchError, map, Observable, of } from 'rxjs';
+import { RefreshTokenRequest } from 'src/app/model/refreshTokenRequest.model';
 @Injectable({
   providedIn: 'root'
 })
@@ -10,7 +11,11 @@ export class AuthService {
   private access_token = null;
   userClaims: any = null;
   
-
+  refreshTokenRequest:RefreshTokenRequest={
+    refreshToken: '',
+    username: '',
+    password: ''
+  }
   private loginSource = new BehaviorSubject<boolean>(false);
   public loginObserver = this.loginSource.asObservable();
 
@@ -18,6 +23,7 @@ export class AuthService {
   public passChangeObserver = this.passChangeSource.asObservable();
 
   constructor(private http: HttpClient, private jwtHelper: JwtHelperService) {
+    //localStorage.clear();
     this.userClaims = this.jwtHelper.decodeToken();
     if (this.userClaims) this.loginSource.next(true);
   }
@@ -32,7 +38,8 @@ export class AuthService {
         map((res) => {
           console.log('Login success');
           console.log(res);
-          localStorage.setItem('token', res.token);
+          localStorage.setItem('token', res.accessToken);
+          localStorage.setItem('refreshToken', res.refreshToken); 
           this.userClaims = this.jwtHelper.decodeToken();
           console.log('userclaims',this.userClaims)
           this.getUserId()
@@ -61,10 +68,11 @@ export class AuthService {
     return this.access_token != undefined && this.access_token != null;
   }
 
-  getToken() {
+  getAccessToken() {
     return this.access_token;
   }
 
+  
   getUserId(): number {
     console.log('id',this.userClaims.id)
     return this.userClaims.id;
@@ -76,5 +84,12 @@ export class AuthService {
     
   }
 
+  refreshToken(refreshTokenRequest: RefreshTokenRequest): Observable<RefreshTokenRequest> {
+    console.log("POzvana metoda");
+    console.log("Refresh token", refreshTokenRequest.refreshToken);
+    console.log("Access token", localStorage.getItem('token'));
+    return this.http.post<RefreshTokenRequest>('http://localhost:8081/api/authentication/refresh-token', refreshTokenRequest);
+  }
+  
  
 }
