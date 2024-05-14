@@ -31,6 +31,8 @@ import { AllRequestsComponent } from './requests/all-requests/all-requests.compo
 import { EmailComponent } from './email/email/email.component';
 import { RejectDialogComponent } from './dialog/reject-dialog/reject-dialog.component';
 import { ClientProfileComponent } from './client-profile/client-profile/client-profile.component';
+import { LinkInvalidComponent } from './email/link-invalid/link-invalid.component';
+import { EmployeeProfileComponent } from './employee/employee-profile/employee-profile.component';
 
 
 
@@ -45,6 +47,8 @@ import { ClientProfileComponent } from './client-profile/client-profile/client-p
    EmailComponent,
    RejectDialogComponent,
    ClientProfileComponent
+   LinkInvalidComponent,
+   EmployeeProfileComponent
 
     
   ],

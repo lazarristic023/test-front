@@ -14,25 +14,28 @@ export class AllRequestsComponent {
   message: String=""
   requests:Requestt[]=[]
   constructor(private requestService:RequestService,private dialog:MatDialog ){
-    this.getAllRequests()
+    this.getAllWaitingRequests()
   }
 
-  getAllRequests(){
+  getAllWaitingRequests(){
     this.requestService.getRequests().subscribe({
-      next:(res)=>{
-          this.requests=res
-          console.log('Requests', this.requests)
+      next: (res:Requestt[]) => {
+        if (res) {
+          // Filtriranje zahtjeva po statusu 'WAITING'
+          this.requests = res.filter((request) => request.status === 'WAITING');
+          console.log('Waiting Requests', this.requests);
+        }
       },
-      error:(err)=>{
+      error: (err) => {
         console.log(err);
       }
-    })
+    });
   }
 
   accept(request:Requestt){
     this.requestService.acceptRequest(request).subscribe({
       next:(res)=>{
-         this.getAllRequests();
+         this.getAllWaitingRequests();
       },
       error:(err)=>{
         console.log(err);
@@ -48,7 +51,7 @@ export class AllRequestsComponent {
       if (reason) {
         this.requestService.rejectRequest(request, reason).subscribe({
           next: (res) => {
-            this.getAllRequests();
+            this.getAllWaitingRequests();
           },
           error: (err) => {
             console.log(err);
