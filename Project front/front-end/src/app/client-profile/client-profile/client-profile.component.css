@@ -3,9 +3,6 @@
     background-size: cover;
     width: 100%;
     min-height: 1050px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
   }
   
   .form-wrap {
@@ -38,6 +35,14 @@
     font-style: "Gill Sans Extrabold", sans-serif;
     font-size: 18px;
   }
+
+  .button2 {
+    border-radius: 8px;
+    background-color: #084d4f;
+    color: #ffffff;
+    width: 100%;
+    font-style: "Gill Sans Extrabold", sans-serif;
+  }
   
   .title {
     font-size: 1.7em;
@@ -47,8 +52,9 @@
     background-color: rgba(246, 245, 245, 0.8);
     border-radius: 10px;
     padding: 5px 10px;
-    margin-top: 5px;
+    margin-top: 0px;
     white-space: nowrap;
+    text-align: center;
   }
   
   .table-wrap {
@@ -89,7 +95,9 @@
   .client-info {
     display: flex;
     flex-direction: column;
+    width: 100%;
     align-items: center;
+    margin-bottom: 20px;
     color: white; /* Promenite boju teksta na belu */
   }
   
@@ -103,19 +111,34 @@
   }
   
   .info-label {
-    flex: 0 0 auto; /* Ovo će sprečiti da se labela raste i omogućiti da se poravna levo */
-    white-space: nowrap; /* Ovo će sprečiti da se tekst prelazi u više redova */
-    margin-right: 10px; /* Dodajte malo razmaka između labele i input polja */
+    flex: 0 0 auto;
+    white-space: nowrap;
+    margin-right: 10px;
     font-weight: bold;
-    background-color: white;
-    color: #084d4f;
+    font-style: "Gill Sans Extrabold", sans-serif;
+    /*background-color: #084d4f;*/ /* Promenite boju pozadine da odgovara boji dugmeta */
+    color: #ffffff; /* Promenite boju teksta na belu */
     border-radius: 4px;
-    height: 20px;
-  }
+    padding: 5px 10px; /* Dodajte malo proširenja da se podudara sa stilom dugmeta */
+    height: 100%; /* Podesite visinu na automatsku da se prilagodi sadržaju */
+    width: 100%;
+}
+
   
   .info-item input {
     flex: 1; /* Ovo će omogućiti input polju da zauzme preostali prostor */
+    padding: 5px;
   }
+
+  .profile-info {
+    margin-bottom: 20px;
+  }
+  
+  .profile-info .info-row {
+    margin-bottom: 20px;
+  }
+  
+  
   
   
 

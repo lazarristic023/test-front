@@ -1,120 +1,137 @@
 <div class="wrap">
-    <form [formGroup]="commercialRequestForm" class="form-wrap">
-      <div class="first-form">
-        <h2 class="title">Create Commercial Request</h2>
-  
-        <mat-form-field appearance="fill">
-            <mat-label>Description</mat-label>
-            <textarea matInput formControlName="description" required></textarea>
-        </mat-form-field>          
-  
-        <mat-form-field appearance="fill">
-          <mat-label>Create Deadline</mat-label>
-          <input matInput formControlName="createDeadline" type="date" required>
-        </mat-form-field>
-  
-        <mat-form-field appearance="fill">
-          <mat-label>Start Date</mat-label>
-          <input matInput formControlName="start" type="date" required>
-        </mat-form-field>
-  
-        <mat-form-field appearance="fill">
-          <mat-label>End Date</mat-label>
-          <input matInput formControlName="end" type="date" required>
-        </mat-form-field>
-  
-        <button type="submit" class="button1" (click)="submitRequest()">Send request</button>
-      </div>
-    </form>
-  </div>
-
-  <h2 class="title">Your commercials</h2>
-  <div class="table-wrap">
-    <table class="commercial-table">
-      <thead>
-        <tr>
-          <th>Description</th>
-          <th>Start Date</th>
-          <th>End Date</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let commercial of commercials">
-          <td>{{ commercial.description }}</td>
-          <td>{{ commercial.startDate | date: 'shortDate' }}</td>
-          <td>{{ commercial.endDate | date: 'shortDate' }}</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="wrap">
-    <div class="client-info">
-      <h2 class="title">Client Profile</h2>
-      <div>
-        <div>
-            <table style="text-align: left;">
-                <tr>
-                    <td><span class="info-label">Username:</span></td>
-                    <td><span class="info-label">{{ client.username }}</span></td>
-                    <td><input matInput [(ngModel)]="usernameValue" (input)="onUsernameInput($event)" placeholder="Enter new username"></td>
-                    <td><button type="button" *ngIf="inputUsername" (click)="editUsername()">Edit</button></td>
-                </tr>                
-                
-                <tr>
-                    <td><span class="info-label">Email:</span></td>
-                    <td><span class="info-label">{{client.email}}</span></td>
-                    <td><input matInput [(ngModel)]="emailValue" (input)="onEmailInput($event)" placeholder="Enter new email"></td>
-                    <td><button type="button" *ngIf="inputEmail" (click)="editEmail()">Edit</button></td>
-                </tr>
-                <tr>
-                    <td><span class="info-label">First name:</span></td>
-                    <td><span class="info-label">{{client.clientFirmName}}</span></td>
-                    <td><input matInput [(ngModel)]="firstNameValue" (input)="onFirstNameInput($event)" placeholder="Enter new first name"></td>
-                    <td><button type="button" *ngIf="inputFirstName" (click)="editFirstName()">Edit</button></td>
-                </tr>
-                <tr>
-                    <td><span class="info-label">Last name:</span></td>
-                    <td><span class="info-label">{{client.clientSurnameFirmPIB}}</span></td>
-                    <td><input matInput [(ngModel)]="lastNameValue" (input)="onLastNameInput($event)" placeholder="Enter new last name"></td>
-                    <td><button type="button" *ngIf="inputLastName" (click)="editLastName()">Edit</button></td>
-                </tr>
-                <tr>
-                    <td><span class="info-label">Address:</span></td>
-                    <td><span class="info-label">{{client.clientFirmResidentialAddress}}</span></td>
-                    <td><input matInput [(ngModel)]="addressValue" (input)="onAddressInput($event)" placeholder="Enter new address"></td>
-                    <td><button type="button" *ngIf="inputAddress" (click)="editAddress()">Edit</button></td>
-                </tr>
-                <tr>
-                    <td><span class="info-label">City:</span></td>
-                    <td><span class="info-label">{{client.city}}</span></td>
-                    <td><input matInput [(ngModel)]="cityValue" (input)="onCityInput($event)" placeholder="Enter new city"></td>
-                    <td><button type="button" *ngIf="inputCity"(click)="editCity()">Edit</button></td>
-                </tr>
-                <tr>
-                    <td><span class="info-label">Country:</span></td>
-                    <td><span class="info-label">{{client.country}}</span></td>
-                    <td><input matInput [(ngModel)]="countryValue" (input)="onCountryInput($event)" placeholder="Enter new country"></td>
-                    <td><button type="button" *ngIf="inputCountry" (click)="editCountry()">Edit</button></td>
-                </tr>
-                <tr>
-                    <td><span class="info-label">Phone:</span></td>
-                    <td><span class="info-label">{{client.phone}}</span></td>
-                    <td><input matInput [(ngModel)]="phoneValue" (input)="onPhoneInput($event)" placeholder="Enter new phone"></td>
-                    <td> <button type="button" *ngIf="inputPhone" (click)="editPhone()">Edit</button></td>
-                </tr>
-                <tr>
-                    <td><span class="info-label">Type:</span></td>
-                    <td><span class="info-label">{{ client.type }}</span></td>
-                </tr>
-                <tr>
-                    <td><span class="info-label">Package Type:</span></td>
-                    <td><span class="info-label">{{ client.packageType }}</span></td>
-                </tr>
-            </table>
+    
+        <h2 class="title">Client Profile</h2>
+        <div class="client-info">
+          <div>
+            <div>
+                <table style="text-align: left;">
+                    <!--tr>
+                        <td><span class="info-label">Username:</span></td>
+                        <td><span class="info-label">{{ client.username }}</span></td>
+                        <td><input matInput [(ngModel)]="usernameValue" (input)="onUsernameInput($event)" placeholder="Enter new username"></td>
+                        <td><button type="button" *ngIf="inputUsername" (click)="editUsername()">Edit</button></td>
+                    </tr-->                
+                    
+                    <tr>
+                        <td><span class="info-label">Email:</span></td>
+                        <td><span class="info-label">{{client.email}}</span></td>
+                        <td><input matInput [(ngModel)]="emailValue" (input)="onEmailInput($event)" placeholder="Edit"></td>
+                        <td><button class="button2" type="button" *ngIf="inputEmail" (click)="editEmail()">Apply</button></td>
+                        <td>
+                            <div>
+                                <span *ngIf="emailError" style="text-align:center;background-color: white;white-space:nowrap;border-radius: 4px; color: #084d4f;">Invalid form of entered email.</span>
+                            </div>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td><span class="info-label">{{fcName}}</span></td>
+                        <td><span class="info-label">{{client.clientFirmName}}</span></td>
+                        <td><input matInput [(ngModel)]="firstNameValue" (input)="onFirstNameInput($event)" placeholder="Edit"></td>
+                        <td><button class="button2" type="button" *ngIf="inputFirstName" (click)="editFirstName()">Apply</button></td>
+                    </tr>
+    
+                    <tr>
+                        <td><span class="info-label">{{surPIB}}</span></td>
+                        <td><span class="info-label">{{client.clientSurnameFirmPIB}}</span></td>
+                        <td><input matInput [(ngModel)]="lastNameValue" (input)="onLastNameInput($event)" placeholder="Edit"></td>
+                        <td><button class="button2" type="button" *ngIf="inputLastName" (click)="editLastName()">Apply</button></td>
+                    </tr>
+    
+                    <tr>
+                        <td><span class="info-label">{{crAddr}}</span></td>
+                        <td><span class="info-label">{{client.clientFirmResidentialAddress}}</span></td>
+                        <td><input matInput [(ngModel)]="addressValue" (input)="onAddressInput($event)" placeholder="Edit"></td>
+                        <td><button class="button2" type="button" *ngIf="inputAddress" (click)="editAddress()">Apply</button></td>
+                    </tr>
+    
+                    <tr>
+                        <td><span class="info-label">City:</span></td>
+                        <td><span class="info-label">{{client.city}}</span></td>
+                        <td><input matInput [(ngModel)]="cityValue" (input)="onCityInput($event)" placeholder="Edit"></td>
+                        <td><button class="button2" type="button" *ngIf="inputCity"(click)="editCity()">Apply</button></td>
+                    </tr>
+    
+                    <tr>
+                        <td><span class="info-label">Country:</span></td>
+                        <td><span class="info-label">{{client.country}}</span></td>
+                        <td><input matInput [(ngModel)]="countryValue" (input)="onCountryInput($event)" placeholder="Edit"></td>
+                        <td><button class="button2" type="button" *ngIf="inputCountry" (click)="editCountry()">Apply</button></td>
+                    </tr>
+    
+                    <tr>
+                        <td><span class="info-label">Phone:</span></td>
+                        <td><span class="info-label">{{client.phone}}</span></td>
+                        <td><input matInput [(ngModel)]="phoneValue" (input)="onPhoneInput($event)" placeholder="Edit"></td>
+                        <td> <button class="button2" type="button" *ngIf="inputPhone" (click)="editPhone()">Apply</button></td>
+                    </tr>
+    
+                    <tr>
+                        <td><span class="info-label">Type:</span></td>
+                        <td><span class="info-label">{{clType}}</span></td>
+                    </tr>
+    
+                    <tr>
+                        <td><span class="info-label">Package Type:</span></td>
+                        <td><span class="info-label">{{ client.packageType }}</span></td>
+                    </tr>
+                </table>
+            </div>
+          </div>
         </div>
+
+        <h2 class="title">Create Commercial Request</h2>
+        <div>
+            <form [formGroup]="commercialRequestForm" class="form-wrap">
+              <div class="first-form">
+          
+                <mat-form-field appearance="fill">
+                    <mat-label>Description</mat-label>
+                    <textarea matInput formControlName="description" required></textarea>
+                </mat-form-field>          
+          
+                <mat-form-field appearance="fill">
+                  <mat-label>Create Deadline</mat-label>
+                  <input matInput formControlName="createDeadline" type="date" required>
+                </mat-form-field>
+          
+                <mat-form-field appearance="fill">
+                  <mat-label>Start Date</mat-label>
+                  <input matInput formControlName="start" type="date" required>
+                </mat-form-field>
+          
+                <mat-form-field appearance="fill">
+                  <mat-label>End Date</mat-label>
+                  <input matInput formControlName="end" type="date" required>
+                </mat-form-field>
+          
+                <button type="submit" class="button1" (click)="submitRequest()">Send request</button>
+              </div>
+            </form>
+        </div>
+
+      
+    
+      <h2 class="title">Your commercials</h2>
+      <div class="table-wrap">
+        <table class="commercial-table">
+          <thead>
+            <tr>
+              <th>Description</th>
+              <th>Start Date</th>
+              <th>End Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let commercial of commercials">
+              <td>{{ commercial.description }}</td>
+              <td>{{ commercial.startDate | date: 'shortDate' }}</td>
+              <td>{{ commercial.endDate | date: 'shortDate' }}</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-    </div>
-  </div>
-  
-  
+      
+
+      
+</div>

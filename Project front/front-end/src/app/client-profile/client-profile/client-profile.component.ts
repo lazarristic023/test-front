@@ -33,7 +33,11 @@ export class ClientProfileComponent implements OnInit {
   inputPhone: boolean = false;
   phoneValue: string = '';
   userId: number | undefined;
-
+  emailError: boolean = false;
+  fcName: string | undefined;
+  surPIB: string | undefined;
+  crAddr: string | undefined;
+  clType: string | undefined;
 
   constructor(private formBuilder: FormBuilder, private authService: AuthService, private clientService: ClientService) { }
 
@@ -47,12 +51,29 @@ export class ClientProfileComponent implements OnInit {
     this.clientService.getClientData(this.authService.getUserId()).subscribe( {
       next:(res)=>{
           this.client = res;
+          this.investigateFaceType();
       },
       error:(err)=>{
         console.log('nije ucitao podatke o klijentu',err)
       }
     });
   }
+
+  private investigateFaceType() : void {
+    if(this.client.type === "LEGALLY") {
+      this.fcName = "Company name:";
+      this.surPIB = "Company PIB:";
+      this.crAddr = "Company address:";
+      this.clType = "LEGALLY";
+    }
+    else {
+      this.fcName = "First name:";
+      this.surPIB = "Last PIB:";
+      this.crAddr = "Residential address:";
+      this.clType = "INDIVIDUAL";
+    }
+  }
+
 
   private getCommercials() : void {
     this.clientService.getClientCommercials(this.authService.getUserId()).subscribe( {
@@ -126,45 +147,131 @@ export class ClientProfileComponent implements OnInit {
     }
   }
 
+  /*
   editUsername(): void {
-    //this.clientService.updateEmail(this.authService.getUserId(), this.emailValue);
+    this.clientService.updateUsername(this.authService.getUserId(), this.usernameValue).subscribe(() => {
+      // Ova funkcija će se pozvati kada se HTTP zahtev uspešno završi
+      console.log('Username updated successfully');
+      this.getClient();
+      this.inputUsername = false;
+      this.usernameValue = '';
+    }, (error) => {
+      // Ova funkcija će se pozvati ako se dogodi greška prilikom HTTP zahteva
+      console.error('Error updating username:', error);
+      // Možete dodati logiku za prikazivanje greške korisniku ako je potrebno
+    });
+  }
+  */
+
+  validateEmail(email: string): boolean {
+    const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return pattern.test(email);
   }
 
   editEmail(): void {
-    this.clientService.updateEmail(this.authService.getUserId(), this.emailValue);
-    location.reload()
+    if(this.validateEmail(this.emailValue)) {
+      this.clientService.updateEmail(this.authService.getUserId(), this.emailValue).subscribe(() => {
+        // Ova funkcija će se pozvati kada se HTTP zahtev uspešno završi
+        console.log('Email updated successfully');
+        this.getClient();
+        this.inputEmail = false;
+        this.emailError = false;
+        this.emailValue = '';
+      }, (error) => {
+        // Ova funkcija će se pozvati ako se dogodi greška prilikom HTTP zahteva
+        console.error('Error updating email:', error);
+        // Možete dodati logiku za prikazivanje greške korisniku ako je potrebno
+      });
+    }
+    else {
+      this.emailError = true;
+    }
   }
 
   editFirstName(): void {
     //console.log(this.firstNameValue);
-    this.clientService.updateName(this.authService.getUserId(), this.firstNameValue);
-    location.reload()
+    this.clientService.updateName(this.authService.getUserId(), this.firstNameValue).subscribe(() => {
+      // Ova funkcija će se pozvati kada se HTTP zahtev uspešno završi
+      console.log('Name updated successfully');
+      this.getClient();
+      this.inputFirstName = false;
+      this.firstNameValue = '';
+    }, (error) => {
+      // Ova funkcija će se pozvati ako se dogodi greška prilikom HTTP zahteva
+      console.error('Error updating name:', error);
+      // Možete dodati logiku za prikazivanje greške korisniku ako je potrebno
+    });
   }
 
   editLastName(): void {
-    this.clientService.updateSurname(this.authService.getUserId(), this.lastNameValue);
-    location.reload()
+    this.clientService.updateSurname(this.authService.getUserId(), this.lastNameValue).subscribe(() => {
+      // Ova funkcija će se pozvati kada se HTTP zahtev uspešno završi
+      console.log('Surname updated successfully');
+      this.getClient();
+      this.inputLastName = false;
+      this.lastNameValue = '';
+    }, (error) => {
+      // Ova funkcija će se pozvati ako se dogodi greška prilikom HTTP zahteva
+      console.error('Error updating surname:', error);
+      // Možete dodati logiku za prikazivanje greške korisniku ako je potrebno
+    });
   }
 
   editAddress(): void {
-    console.log(this.addressValue);
-    this.clientService.updateAddress(this.authService.getUserId(), this.addressValue);
-    //location.reload()
+    //console.log(this.addressValue);
+    this.clientService.updateAddress(this.authService.getUserId(), this.addressValue).subscribe(() => {
+      // Ova funkcija će se pozvati kada se HTTP zahtev uspešno završi
+      console.log('Address updated successfully');
+      this.getClient();
+      this.inputAddress = false;
+      this.addressValue = '';
+    }, (error) => {
+      // Ova funkcija će se pozvati ako se dogodi greška prilikom HTTP zahteva
+      console.error('Error updating address:', error);
+      // Možete dodati logiku za prikazivanje greške korisniku ako je potrebno
+    });
   }
 
   editCity(): void {
-    this.clientService.updateCity(this.authService.getUserId(), this.cityValue);
-    location.reload()
+    this.clientService.updateCity(this.authService.getUserId(), this.cityValue).subscribe(() => {
+      // Ova funkcija će se pozvati kada se HTTP zahtev uspešno završi
+      console.log('City updated successfully');
+      this.getClient();
+      this.inputCity = false;
+      this.cityValue = '';
+    }, (error) => {
+      // Ova funkcija će se pozvati ako se dogodi greška prilikom HTTP zahteva
+      console.error('Error updating city:', error);
+      // Možete dodati logiku za prikazivanje greške korisniku ako je potrebno
+    });
   }
 
   editCountry(): void {
-    this.clientService.updateCountry(this.authService.getUserId(), this.countryValue);
-    location.reload()
+    this.clientService.updateCountry(this.authService.getUserId(), this.countryValue).subscribe(() => {
+      // Ova funkcija će se pozvati kada se HTTP zahtev uspešno završi
+      console.log('Country updated successfully');
+      this.getClient();
+      this.inputCountry = false;
+      this.countryValue = '';
+    }, (error) => {
+      // Ova funkcija će se pozvati ako se dogodi greška prilikom HTTP zahteva
+      console.error('Error updating country:', error);
+      // Možete dodati logiku za prikazivanje greške korisniku ako je potrebno
+    });
   }
 
   editPhone(): void {
-    this.clientService.updatePhone(this.authService.getUserId(), this.phoneValue);
-    location.reload()
+    this.clientService.updatePhone(this.authService.getUserId(), this.phoneValue).subscribe(() => {
+      // Ova funkcija će se pozvati kada se HTTP zahtev uspešno završi
+      console.log('Phone updated successfully');
+      this.getClient();
+      this.inputPhone = false;
+      this.phoneValue = '';
+    }, (error) => {
+      // Ova funkcija će se pozvati ako se dogodi greška prilikom HTTP zahteva
+      console.error('Error updating phone:', error);
+      // Možete dodati logiku za prikazivanje greške korisniku ako je potrebno
+    });
   }
 
   onUsernameInput(event: any): void {
