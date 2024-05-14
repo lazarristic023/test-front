@@ -113,7 +113,7 @@ export class ClientProfileComponent implements OnInit {
       this.clientService.sendCommercialRequest(commercialRequest).subscribe( {
         next:(res)=>{
             console.log('successfull',res)
-            this.commercialRequestForm.reset;
+            this.commercialRequestForm.reset();
         },
         error:(err)=>{
           console.log('nije poslao zahtjev za reklamu',err)
@@ -136,9 +136,9 @@ export class ClientProfileComponent implements OnInit {
   }
 
   editFirstName(): void {
-    console.log(this.firstNameValue);
+    //console.log(this.firstNameValue);
     this.clientService.updateName(this.authService.getUserId(), this.firstNameValue);
-    //location.reload()
+    location.reload()
   }
 
   editLastName(): void {
@@ -147,8 +147,9 @@ export class ClientProfileComponent implements OnInit {
   }
 
   editAddress(): void {
+    console.log(this.addressValue);
     this.clientService.updateAddress(this.authService.getUserId(), this.addressValue);
-    location.reload()
+    //location.reload()
   }
 
   editCity(): void {
