@@ -5,6 +5,7 @@ import { HomeComponent } from './layout/home/home.component';
 import { AllRequestsComponent } from './requests/all-requests/all-requests.component';
 import { EmailComponent } from './email/email/email.component';
 import { LinkInvalidComponent } from './email/link-invalid/link-invalid.component';
+import { EmployeeProfileComponent } from './employee/employee-profile/employee-profile.component';
 
 
 
@@ -14,7 +15,8 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'requests', component: AllRequestsComponent },
   { path: 'successfully/:email/:id/:expiry/:token', component: EmailComponent },
-  {path: 'email-link-invalid', component:LinkInvalidComponent}
+  {path: 'email-link-invalid', component:LinkInvalidComponent},
+  {path:'employeeProfile',component:EmployeeProfileComponent}
 
 
 ];

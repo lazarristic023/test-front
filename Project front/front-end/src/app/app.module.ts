@@ -31,6 +31,7 @@ import { AllRequestsComponent } from './requests/all-requests/all-requests.compo
 import { EmailComponent } from './email/email/email.component';
 import { RejectDialogComponent } from './dialog/reject-dialog/reject-dialog.component';
 import { LinkInvalidComponent } from './email/link-invalid/link-invalid.component';
+import { EmployeeProfileComponent } from './employee/employee-profile/employee-profile.component';
 
 
 
@@ -43,7 +44,8 @@ import { LinkInvalidComponent } from './email/link-invalid/link-invalid.componen
    AllRequestsComponent,
    EmailComponent,
    RejectDialogComponent,
-   LinkInvalidComponent
+   LinkInvalidComponent,
+   EmployeeProfileComponent
 
     
   ],
