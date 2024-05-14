@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/infrastructure/authentication/auth.service';
+import { Client } from 'src/app/model/client.model';
 import { CommercialRequest } from 'src/app/model/commercial-request.model';
 import { Commercial } from 'src/app/model/commercial.model';
 import { ClientService } from 'src/app/service/client-service.service';
@@ -13,12 +14,27 @@ import { ClientService } from 'src/app/service/client-service.service';
 export class ClientProfileComponent implements OnInit {
   commercialRequestForm!: FormGroup;
   commercials: Commercial[] = [];
+  client: Client = new Client();
+  editMode: any = {};
+
 
   constructor(private formBuilder: FormBuilder, private authService: AuthService, private clientService: ClientService) { }
 
   ngOnInit(): void {
     this.getCommercials()
+    this.getClient();
     this.initForm();
+  }
+
+  private getClient(): void {
+    this.clientService.getClientData(this.authService.getUserId()).subscribe( {
+      next:(res)=>{
+          this.client = res;
+      },
+      error:(err)=>{
+        console.log('nije ucitao podatke o klijentu',err)
+      }
+    });
   }
 
   private getCommercials() : void {
@@ -90,5 +106,13 @@ export class ClientProfileComponent implements OnInit {
       console.log('Form is invalid');
       // Možete dodati logiku za prikazivanje poruke o grešci ili dodatne akcije ako forma nije validna
     }
+  }
+
+  enableEditMode(field: string): void {
+    this.editMode[field] = true; // Kada se pozove funkcija enableEditMode, postavićemo odgovarajući ključ u editMode objektu na true
+  }
+
+  toggleEditMode(field: string): void {
+    this.editMode[field] = !this.editMode[field]; // Kada se pozove funkcija toggleEditMode, promenićemo vrednost ključa u editMode objektu
   }
 }

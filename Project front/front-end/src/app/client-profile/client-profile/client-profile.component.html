@@ -46,4 +46,116 @@
       </tbody>
     </table>
   </div>
+
+  <div class="wrap">
+    <div class="client-info">
+      <h2 class="title">Client Profile</h2>
+      
+      <div class="info-row">
+        <div class="info-item">
+            <table style="text-align: left;">
+                <tr>
+                    <td style="text-align: left;"><span class="info-label">Username:</span></td>
+                    <td style="text-align: left;"><input matInput formControlName="username" [disabled]="!editMode.username" (input)="enableEditMode('username')"></td>
+                    <td style="text-align: left;"><button type="button" (click)="toggleEditMode('username')" [disabled]="!editMode.username">Edit</button></td>
+                </tr>
+            </table>
+        </div>
+      </div>
+
+      <div class="info-row">
+        <div class="info-item">
+            <table>
+                <tr>
+                    <td style="text-align: left;"><span class="info-label">Email:</span></td>
+                    <td style="text-align: left;"><input matInput formControlName="email" [disabled]="!editMode.email" (input)="enableEditMode('email')"></td>
+                    <td style="text-align: left;"><button type="button" (click)="toggleEditMode('email')" [disabled]="!editMode.email">Edit</button></td>
+                </tr>
+            </table>
+        </div>
+      </div>
+
+      <div class="info-row">
+        <div class="info-item">
+            <table>
+                <tr>
+                    <td><span class="info-label">First name:</span></td>
+                    <td><input matInput formControlName="firstname" [disabled]="!editMode.firstname" (input)="enableEditMode('firstname')"></td>
+                    <td><button type="button" (click)="toggleEditMode('firstname')" [disabled]="!editMode.firstname">Edit</button></td>
+                </tr>
+            </table>
+        </div>
+      </div>
+
+      <div class="info-row">
+        <div class="info-item">
+            <table>
+                <tr>
+                    <td><span class="info-label">Last name:</span></td>
+                    <td><input matInput formControlName="lastname" [disabled]="!editMode.lastname" (input)="enableEditMode('lastname')"></td>
+                    <td><button type="button" (click)="toggleEditMode('lastname')" [disabled]="!editMode.lastname">Edit</button></td>
+                </tr>
+            </table>
+        </div>
+      </div>
+
+      <div class="info-row">
+        <div class="info-item">
+            <table>
+                <tr>
+                    <td><span class="info-label">Address:</span></td>
+                    <td><input matInput formControlName="address" [disabled]="!editMode.address" (input)="enableEditMode('address')"></td>
+                    <td><button type="button" (click)="toggleEditMode('address')" [disabled]="!editMode.address">Edit</button></td>
+                </tr>
+            </table>
+        </div>
+      </div>
+
+      <div class="info-row">
+        <div class="info-item">
+            <table>
+                <tr>
+                    <td><span class="info-label">City:</span></td>
+                    <td><input matInput formControlName="city" [disabled]="!editMode.city" (input)="enableEditMode('city')"></td>
+                    <td><button type="button" (click)="toggleEditMode('city')" [disabled]="!editMode.city">Edit</button></td>
+                </tr>
+            </table>
+        </div>
+      </div>
+
+      <div class="info-row">
+        <div class="info-item">
+            <table>
+                <tr>
+                    <td><span class="info-label">Country:</span></td>
+                    <td><input matInput formControlName="country" [disabled]="!editMode.country" (input)="enableEditMode('country')"></td>
+                    <td><button type="button" (click)="toggleEditMode('country')" [disabled]="!editMode.country">Edit</button></td>
+                </tr>
+            </table>
+        </div>
+      </div>
+
+      <div class="info-row">
+        <div class="info-item">
+            <table>
+                <tr>
+                    <td><span class="info-label">Phone:</span></td>
+                    <td><input matInput formControlName="phonr" [disabled]="!editMode.phone" (input)="enableEditMode('phone')"></td>
+                    <td> <button type="button" (click)="toggleEditMode('phone')" [disabled]="!editMode.phone">Edit</button></td>
+                </tr>
+            </table>
+        </div>
+      </div>
+
+      <div class="info-row">
+        <span>Type:</span>
+        <span>{{ client.type }}</span>
+      </div>
+      <div class="info-row">
+        <span>Package Type:</span>
+        <span>{{ client.packageType }}</span>
+      </div>
+    </div>
+  </div>
+  
   
