@@ -41,13 +41,13 @@ export class RequestService {
     return this.http.put<Requestt>('http://localhost:8081/api/requests/reject/'+reason,request ,{headers});
   }
 
-  getRequestByClientId(id:number): Observable<Requestt> {
+  getRequestByUsername(username:string): Observable<Requestt> {
     const token = this.jwtHelper.tokenGetter();
     const headers = new HttpHeaders({
       Authorization: 'Bearer ' + token,
       'Content-Type': 'application/json',
     });
-    return this.http.get<Requestt>('http://localhost:8081/api/requests/getByClientId/'+id ,{headers});
+    return this.http.get<Requestt>('http://localhost:8081/api/requests/getByUsername/'+username ,{headers});
   }
   
 }
