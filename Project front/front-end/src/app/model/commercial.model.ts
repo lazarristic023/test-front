@@ -1,7 +1,7 @@
 export class Commercial {
     description: string | undefined;
-    start: Date | undefined;
-    end: Date | undefined;
+    startDate: Date | undefined;
+    endDate: Date | undefined;
     clientId: number | undefined;
   }
     

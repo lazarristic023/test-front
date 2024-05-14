@@ -1,8 +1,8 @@
 export class CommercialRequest {
     description: string | undefined;
-    createDeadline: Date | undefined;
-    start: Date | undefined;
-    end: Date | undefined;
+    createDeadlineDate: Date | undefined;
+    startDate: Date | undefined;
+    endDate: Date | undefined;
     clientId: number | undefined;
     isAccepted: boolean | undefined;
   }

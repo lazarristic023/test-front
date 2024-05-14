@@ -1,1 +1,49 @@
-<p>client-profile works!</p>
+<div class="wrap">
+    <form [formGroup]="commercialRequestForm" class="form-wrap">
+      <div class="first-form">
+        <h2 class="title">Create Commercial Request</h2>
+  
+        <mat-form-field appearance="fill">
+            <mat-label>Description</mat-label>
+            <textarea matInput formControlName="description" required></textarea>
+        </mat-form-field>          
+  
+        <mat-form-field appearance="fill">
+          <mat-label>Create Deadline</mat-label>
+          <input matInput formControlName="createDeadline" type="date" required>
+        </mat-form-field>
+  
+        <mat-form-field appearance="fill">
+          <mat-label>Start Date</mat-label>
+          <input matInput formControlName="start" type="date" required>
+        </mat-form-field>
+  
+        <mat-form-field appearance="fill">
+          <mat-label>End Date</mat-label>
+          <input matInput formControlName="end" type="date" required>
+        </mat-form-field>
+  
+        <button type="submit" class="button1" (click)="submitRequest()">Send request</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="table-wrap">
+    <table class="commercial-table">
+      <thead>
+        <tr>
+          <th>Description</th>
+          <th>Start Date</th>
+          <th>End Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let commercial of commercials">
+          <td>{{ commercial.description }}</td>
+          <td>{{ commercial.startDate | date: 'shortDate' }}</td>
+          <td>{{ commercial.endDate | date: 'shortDate' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
