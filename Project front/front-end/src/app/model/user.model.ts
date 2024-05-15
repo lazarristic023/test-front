@@ -11,4 +11,7 @@ export interface User{
     password:string;
     role:Role;
     emailChecked:boolean;
+    city:string,
+    country:string,
+    phone:string
 }

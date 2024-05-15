@@ -10,10 +10,6 @@
     <input id="lastName" [(ngModel)]="admin.lastName" name="lastName" required>
   </div>
 
-  <div>
-    <label for="username">Username:</label>
-    <input id="username" [(ngModel)]="admin.username" name="username" required>
-  </div>
 
   <div>
     <label for="email">Email:</label>
@@ -23,6 +19,19 @@
   <div>
     <label for="password">Password:</label>
     <input id="password" type="password" [(ngModel)]="admin.password" name="password">
+  </div>
+
+  <div>
+    <label for="city">City:</label>
+    <input id="city" type="text" [(ngModel)]="admin.city" name="city">
+  </div>
+  <div>
+    <label for="country">Country:</label>
+    <input id="country" type="text" [(ngModel)]="admin.country" name="country">
+  </div>
+  <div>
+    <label for="phone">Phone number:</label>
+    <input id="phone" type="text" [(ngModel)]="admin.phone" name="phone">
   </div>
 
   <button type="submit">Save Changes</button>

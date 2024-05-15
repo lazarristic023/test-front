@@ -32,6 +32,8 @@ import { RejectDialogComponent } from './dialog/reject-dialog/reject-dialog.comp
 import { TokenInterceptor } from './infrastructure/interceptor/TokenInterceptor';
 import { AdminProfileComponent } from './admin-profile/admin-profile.component';
 import { EditAdminProfileComponent } from './edit-admin-profile/edit-admin-profile.component';
+import { RegisterAdminsComponent } from './register-admins/register-admins.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 
 
@@ -46,7 +48,9 @@ import { EditAdminProfileComponent } from './edit-admin-profile/edit-admin-profi
    EmailComponent,
    RejectDialogComponent,
    AdminProfileComponent,
-   EditAdminProfileComponent
+   EditAdminProfileComponent,
+   RegisterAdminsComponent,
+   ChangePasswordComponent
 
     
   ],

@@ -8,6 +8,8 @@ import { EmailComponent } from './email/email/email.component';
 import { AuthGuard } from './infrastructure/authentication/AuthGuard';
 import { AdminProfileComponent } from './admin-profile/admin-profile.component';
 import { EditAdminProfileComponent } from './edit-admin-profile/edit-admin-profile.component';
+import { RegisterAdminsComponent } from './register-admins/register-admins.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 
 
@@ -20,6 +22,8 @@ const routes: Routes = [
   { path: 'email', component: EmailComponent , canActivate: [AuthGuard] },
   { path: 'adminProfile', component: AdminProfileComponent , canActivate: [AuthGuard] },
   { path: 'editAdminProfile', component: EditAdminProfileComponent , canActivate: [AuthGuard] },
+  { path: 'createAdmin', component: RegisterAdminsComponent , canActivate: [AuthGuard] },
+  { path: 'changePassword', component: ChangePasswordComponent , canActivate: [AuthGuard] },
 
 
 ];

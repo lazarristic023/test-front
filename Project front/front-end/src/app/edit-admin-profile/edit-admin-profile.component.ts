@@ -20,7 +20,11 @@ export class EditAdminProfileComponent {
     isPredefined: false,
     id: 0,
     role: Role.ADMINISTRATOR,
-    emailChecked: false
+    emailChecked: false,
+    city: '',
+    country: '',
+    phone: '',
+    firstLogging: false
   };
 
   constructor(private authService: AuthService, private adminService: AdminProfileService, private router: Router) {}
