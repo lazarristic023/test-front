@@ -1,0 +1,30 @@
+<div class="company-list">
+  <button (click)="editAdmin()">Edit Admin</button>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Address</th>
+          <th>Employees</th>
+          <th>Clients</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let company of companies">
+          <td>{{ company.name }}</td>
+          <td>{{ company.address }}</td>
+          <td>
+            <ul>
+              <li *ngFor="let employee of company.employees">{{ employee.firstName }} {{ employee.lastName }}</li>
+            </ul>
+          </td>
+          <td>
+            <ul>
+              <li *ngFor="let client of company.clients">{{ client.username }} {{ client.clientFirmName }}</li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

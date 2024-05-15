@@ -30,6 +30,8 @@ import { AllRequestsComponent } from './requests/all-requests/all-requests.compo
 import { EmailComponent } from './email/email/email.component';
 import { RejectDialogComponent } from './dialog/reject-dialog/reject-dialog.component';
 import { TokenInterceptor } from './infrastructure/interceptor/TokenInterceptor';
+import { AdminProfileComponent } from './admin-profile/admin-profile.component';
+import { EditAdminProfileComponent } from './edit-admin-profile/edit-admin-profile.component';
 
 
 
@@ -42,7 +44,9 @@ import { TokenInterceptor } from './infrastructure/interceptor/TokenInterceptor'
     ClientRegisterFormComponent,
    AllRequestsComponent,
    EmailComponent,
-   RejectDialogComponent
+   RejectDialogComponent,
+   AdminProfileComponent,
+   EditAdminProfileComponent
 
     
   ],
