@@ -6,16 +6,20 @@ import { HomeComponent } from './layout/home/home.component';
 import { AllRequestsComponent } from './requests/all-requests/all-requests.component';
 import { EmailComponent } from './email/email/email.component';
 import { AuthGuard } from './infrastructure/authentication/AuthGuard';
+import { AdminProfileComponent } from './admin-profile/admin-profile.component';
+import { EditAdminProfileComponent } from './edit-admin-profile/edit-admin-profile.component';
 
 
 
 
 const routes: Routes = [ 
   { path: 'login', component: LoginComponent },
-  { path: 'client-register', component: ClientRegisterFormComponent, canActivate: [AuthGuard },
-  { path: 'home', component: HomeComponent , canActivate: [AuthGuard},
+  { path: 'client-register', component: ClientRegisterFormComponent, canActivate: [AuthGuard ]},
+  { path: 'home', component: HomeComponent , canActivate: [AuthGuard]},
   { path: 'requests', component: AllRequestsComponent , canActivate: [AuthGuard]},
   { path: 'email', component: EmailComponent , canActivate: [AuthGuard] },
+  { path: 'adminProfile', component: AdminProfileComponent , canActivate: [AuthGuard] },
+  { path: 'editAdminProfile', component: EditAdminProfileComponent , canActivate: [AuthGuard] },
 
 
 ];

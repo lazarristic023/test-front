@@ -92,4 +92,8 @@ export class AuthService {
   }
   
  
+  getCurrentUser() {
+    // Pretpostavimo da vraća podatke o trenutno ulogovanom korisniku
+    return JSON.parse(localStorage.getItem('currentUser') || '{}');
+  }
 }

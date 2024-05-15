@@ -1,0 +1,29 @@
+<h2>Edit Admin</h2>
+<form (ngSubmit)="onSubmit()">
+  <div>
+    <label for="firstName">First Name:</label>
+    <input id="firstName" [(ngModel)]="admin.firstName" name="firstName" required>
+  </div>
+
+  <div>
+    <label for="lastName">Last Name:</label>
+    <input id="lastName" [(ngModel)]="admin.lastName" name="lastName" required>
+  </div>
+
+  <div>
+    <label for="username">Username:</label>
+    <input id="username" [(ngModel)]="admin.username" name="username" required>
+  </div>
+
+  <div>
+    <label for="email">Email:</label>
+    <input id="email" [(ngModel)]="admin.email" name="email" required>
+  </div>
+
+  <div>
+    <label for="password">Password:</label>
+    <input id="password" type="password" [(ngModel)]="admin.password" name="password">
+  </div>
+
+  <button type="submit">Save Changes</button>
+</form>
