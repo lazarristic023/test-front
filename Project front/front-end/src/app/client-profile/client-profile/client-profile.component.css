@@ -1,0 +1,145 @@
+.wrap {
+    background: url("https://cioafrica.co/wp-content/uploads/2024/01/cyber-security.jpeg") center center/cover no-repeat;
+    background-size: cover;
+    width: 100%;
+    min-height: 1050px;
+  }
+  
+  .form-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    align-items: center;
+  }
+  
+  .first-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    max-width: 400px; /* Adjust as needed */
+  }
+  
+  .input-field {
+    width: 100%;
+  }
+  
+  .button1 {
+    margin-top: 20px;
+    border-radius: 8px;
+    background-color: #084d4f;
+    color: #ffffff;
+    padding: 10px 20px;
+    width: 100%;
+    font-style: "Gill Sans Extrabold", sans-serif;
+    font-size: 18px;
+  }
+
+  .button2 {
+    border-radius: 8px;
+    background-color: #084d4f;
+    color: #ffffff;
+    width: 100%;
+    font-style: "Gill Sans Extrabold", sans-serif;
+  }
+  
+  .title {
+    font-size: 1.7em;
+    text-transform: uppercase;
+    color: #084d4f;
+    font-style: "Gill Sans Extrabold", sans-serif;
+    background-color: rgba(246, 245, 245, 0.8);
+    border-radius: 10px;
+    padding: 5px 10px;
+    margin-top: 0px;
+    white-space: nowrap;
+    text-align: center;
+  }
+  
+  .table-wrap {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .commercial-table {
+    width: 80%;
+    max-width: 800px; /* Adjust as needed */
+    border-collapse: collapse;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  .commercial-table th,
+  .commercial-table td {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .commercial-table th {
+    background-color: #084d4f;
+    color: #ffffff;
+    text-align: left;
+  }
+  
+  .commercial-table tbody tr:nth-child(even) {
+    background-color: rgba(246, 245, 245, 0.8);
+  }
+  
+  .commercial-table tbody tr:hover {
+    background-color: #d9d9d9;
+  }
+
+  .client-info {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    margin-bottom: 20px;
+    color: white; /* Promenite boju teksta na belu */
+  }
+  
+  .info-row {
+    display: flex;
+    align-items: center;
+  }
+  
+  .info-item {
+    margin-bottom: 10px; /* Dodajte malo razmaka između svakog reda */
+  }
+  
+  .info-label {
+    flex: 0 0 auto;
+    white-space: nowrap;
+    margin-right: 10px;
+    font-weight: bold;
+    font-style: "Gill Sans Extrabold", sans-serif;
+    /*background-color: #084d4f;*/ /* Promenite boju pozadine da odgovara boji dugmeta */
+    color: #ffffff; /* Promenite boju teksta na belu */
+    border-radius: 4px;
+    padding: 5px 10px; /* Dodajte malo proširenja da se podudara sa stilom dugmeta */
+    height: 100%; /* Podesite visinu na automatsku da se prilagodi sadržaju */
+    width: 100%;
+}
+
+  
+  .info-item input {
+    flex: 1; /* Ovo će omogućiti input polju da zauzme preostali prostor */
+    padding: 5px;
+  }
+
+  .profile-info {
+    margin-bottom: 20px;
+  }
+  
+  .profile-info .info-row {
+    margin-bottom: 20px;
+  }
+  
+  
+  
+  
+
+  

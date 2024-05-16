@@ -32,6 +32,9 @@ import { RejectDialogComponent } from './dialog/reject-dialog/reject-dialog.comp
 import { TokenInterceptor } from './infrastructure/interceptor/TokenInterceptor';
 import { AdminProfileComponent } from './admin-profile/admin-profile.component';
 import { EditAdminProfileComponent } from './edit-admin-profile/edit-admin-profile.component';
+import { ClientProfileComponent } from './client-profile/client-profile/client-profile.component';
+import { LinkInvalidComponent } from './email/link-invalid/link-invalid.component';
+import { EmployeeProfileComponent } from './employee/employee-profile/employee-profile.component';
 
 
 
@@ -46,7 +49,10 @@ import { EditAdminProfileComponent } from './edit-admin-profile/edit-admin-profi
    EmailComponent,
    RejectDialogComponent,
    AdminProfileComponent,
-   EditAdminProfileComponent
+   EditAdminProfileComponent,
+   ClientProfileComponent,
+   LinkInvalidComponent,
+   EmployeeProfileComponent
 
     
   ],

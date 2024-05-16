@@ -8,6 +8,10 @@ import { EmailComponent } from './email/email/email.component';
 import { AuthGuard } from './infrastructure/authentication/AuthGuard';
 import { AdminProfileComponent } from './admin-profile/admin-profile.component';
 import { EditAdminProfileComponent } from './edit-admin-profile/edit-admin-profile.component';
+import { ClientProfileComponent } from './client-profile/client-profile/client-profile.component';
+import { LinkInvalidComponent } from './email/link-invalid/link-invalid.component';
+import { EmployeeProfileComponent } from './employee/employee-profile/employee-profile.component';
+
 
 
 
@@ -20,6 +24,13 @@ const routes: Routes = [
   { path: 'email', component: EmailComponent , canActivate: [AuthGuard] },
   { path: 'adminProfile', component: AdminProfileComponent , canActivate: [AuthGuard] },
   { path: 'editAdminProfile', component: EditAdminProfileComponent , canActivate: [AuthGuard] },
+  //{ path: 'client-register', component: ClientRegisterFormComponent },
+  //{ path: 'home', component: HomeComponent },
+  //{ path: 'requests', component: AllRequestsComponent },
+  { path: 'client-profile', component: ClientProfileComponent },
+  { path: 'successfully/:email/:id/:expiry/:token', component: EmailComponent },
+  {path: 'email-link-invalid', component:LinkInvalidComponent},
+  {path:'employeeProfile',component:EmployeeProfileComponent}
 
 
 ];

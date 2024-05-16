@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
+import { Route, Router } from '@angular/router';
 import { ClientService } from 'src/app/service/client-service.service';
 
 @Component({
@@ -12,7 +13,7 @@ export class ClientRegisterFormComponent {
   userForm: FormGroup;
   packageType: string | undefined;
 
-  constructor(private formBuilder: FormBuilder, private clientService: ClientService) {
+  constructor(private formBuilder: FormBuilder, private clientService: ClientService, private router: Router) {
     this.userForm = this.formBuilder.group({
       username: ['', Validators.required],
       userType: [false, Validators.required],
@@ -101,7 +102,7 @@ export class ClientRegisterFormComponent {
     this.clientService.sendRequest(username).subscribe( {
       next:(res)=>{
           console.log('successfull',res)
-          //this.router.navigate(['home'])
+          this.router.navigate(['login'])
       },
       error:(err)=>{
         console.log('greska',err)
