@@ -11,4 +11,7 @@ export interface User{
     password:string;
     role:Role;
     emailChecked:boolean;
+
+    firstName:string; //dodato da bi se kompajliralo
+    lastName:string;
 }
