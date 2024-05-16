@@ -14,6 +14,8 @@ import { EmployeeProfileComponent } from './employee/employee-profile/employee-p
 
 import { RegisterAdminsComponent } from './register-admins/register-admins.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
+import { PasswordlessLoginComponent } from './layout/passwordless-login/passwordless-login.component';
+import { PasswordlessLoginRedirectiorComponent } from './layout/passwordless-login-redirectior/passwordless-login-redirectior.component';
 
 
 
@@ -35,6 +37,8 @@ const routes: Routes = [
   {path:'employeeProfile',component:EmployeeProfileComponent},
   { path: 'createAdmin', component: RegisterAdminsComponent , canActivate: [AuthGuard] },
   { path: 'changePassword', component: ChangePasswordComponent , canActivate: [AuthGuard] },
+  { path: 'passwordlessLogin', component: PasswordlessLoginComponent },
+  { path: 'redirectPasswordlessLogin', component: PasswordlessLoginRedirectiorComponent },
 
 
 ];

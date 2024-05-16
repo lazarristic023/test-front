@@ -37,6 +37,8 @@ import { LinkInvalidComponent } from './email/link-invalid/link-invalid.componen
 import { EmployeeProfileComponent } from './employee/employee-profile/employee-profile.component';
 import { RegisterAdminsComponent } from './register-admins/register-admins.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
+import { PasswordlessLoginComponent } from './layout/passwordless-login/passwordless-login.component';
+import { PasswordlessLoginRedirectiorComponent } from './layout/passwordless-login-redirectior/passwordless-login-redirectior.component';
 
 
 
@@ -56,7 +58,9 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
    LinkInvalidComponent,
    EmployeeProfileComponent,
    RegisterAdminsComponent,
-   ChangePasswordComponent
+   ChangePasswordComponent,
+   PasswordlessLoginComponent,
+   PasswordlessLoginRedirectiorComponent
 
     
   ],

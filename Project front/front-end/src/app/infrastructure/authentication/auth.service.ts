@@ -51,6 +51,16 @@ export class AuthService {
       );
   }
 
+  passwordlessLogin(token: string): Observable<any> {
+    // Make an HTTP request to the server to exchange the token for access and refresh tokens
+    return this.http.get<any>('http://localhost:8081/api/authentication/passwordlessLogin', {
+      params: {
+        token: token
+      },
+      observe: 'response'
+    });
+  }
+
   logout(): void {
     localStorage.clear();
     this.loginSource.next(false);
@@ -105,5 +115,12 @@ export class AuthService {
     });
     return this.http.get<Boolean>('http://localhost:8081/api/authentication/isEmailChecked/'+ id ,{headers});
   }
+
+  sendLoginLink(email: string): Observable<boolean> {
+    const url = `http://localhost:8081/api/authentication/sendPasswordlessLoginLink?email=${encodeURIComponent(email)}`;
+    return this.http.get<boolean>(url);
+  }
+  
+
  
 }
