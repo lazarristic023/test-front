@@ -134,5 +134,4 @@ export class ClientService {
     return this.http.post<CommercialRequest>(`${this.apiUrl}/commercial-request/create`, request);
   }
 
-  
 }
