@@ -46,7 +46,7 @@ import { EmployeeProfileComponent } from './employee/employee-profile/employee-p
    AllRequestsComponent,
    EmailComponent,
    RejectDialogComponent,
-   ClientProfileComponent
+   ClientProfileComponent,
    LinkInvalidComponent,
    EmployeeProfileComponent
 
