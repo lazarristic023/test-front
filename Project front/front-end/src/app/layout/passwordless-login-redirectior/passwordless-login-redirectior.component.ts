@@ -27,11 +27,18 @@ export class PasswordlessLoginRedirectiorComponent {
             localStorage.setItem('token', accessToken);
             localStorage.setItem('refreshToken', refreshToken);
 
+            this.authService.setUserClaims();
+            this.authService.setAccessToken(accessToken);
+            this.authService.setLoginSource(true);
+
             // Redirect user to home page or any other desired location
             this.router.navigateByUrl('/home');
           },
           error => {
-            // Handle error
+            console.log("Error with passwordless login:")
+            console.log(error);
+            this.authService.logout();
+            this.router.navigateByUrl('/login');
           }
         );
       }

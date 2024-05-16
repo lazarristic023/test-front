@@ -51,6 +51,18 @@ export class AuthService {
       );
   }
 
+  setUserClaims(): void {
+    this.userClaims = this.jwtHelper.decodeToken();
+  }
+
+  setAccessToken(token: any) {
+    this.access_token = token;
+  }
+
+  setLoginSource(ls: boolean) {
+    this.loginSource.next(ls);
+  }
+
   passwordlessLogin(token: string): Observable<any> {
     // Make an HTTP request to the server to exchange the token for access and refresh tokens
     return this.http.get<any>('http://localhost:8081/api/authentication/passwordlessLogin', {

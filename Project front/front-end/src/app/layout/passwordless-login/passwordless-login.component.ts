@@ -28,7 +28,7 @@ export class PasswordlessLoginComponent {
       },
       error: (err) => {
         console.log('Error sending login link', err)
-        alert('Email is either incorect or you do not match requirements for this feature')
+        alert('Email is either incorect or you do not meet requirements for this feature')
       }
     });
   }
