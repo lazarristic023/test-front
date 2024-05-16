@@ -12,6 +12,8 @@ import { ClientProfileComponent } from './client-profile/client-profile/client-p
 import { LinkInvalidComponent } from './email/link-invalid/link-invalid.component';
 import { EmployeeProfileComponent } from './employee/employee-profile/employee-profile.component';
 
+import { RegisterAdminsComponent } from './register-admins/register-admins.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 
 
@@ -30,7 +32,9 @@ const routes: Routes = [
   { path: 'client-profile', component: ClientProfileComponent },
   { path: 'successfully/:email/:id/:expiry/:token', component: EmailComponent },
   {path: 'email-link-invalid', component:LinkInvalidComponent},
-  {path:'employeeProfile',component:EmployeeProfileComponent}
+  {path:'employeeProfile',component:EmployeeProfileComponent},
+  { path: 'createAdmin', component: RegisterAdminsComponent , canActivate: [AuthGuard] },
+  { path: 'changePassword', component: ChangePasswordComponent , canActivate: [AuthGuard] },
 
 
 ];

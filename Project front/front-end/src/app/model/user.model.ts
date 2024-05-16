@@ -14,4 +14,7 @@ export interface User{
 
     firstName:string; //dodato da bi se kompajliralo
     lastName:string;
+    city:string,
+    country:string,
+    phone:string
 }

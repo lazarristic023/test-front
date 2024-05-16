@@ -35,6 +35,8 @@ import { EditAdminProfileComponent } from './edit-admin-profile/edit-admin-profi
 import { ClientProfileComponent } from './client-profile/client-profile/client-profile.component';
 import { LinkInvalidComponent } from './email/link-invalid/link-invalid.component';
 import { EmployeeProfileComponent } from './employee/employee-profile/employee-profile.component';
+import { RegisterAdminsComponent } from './register-admins/register-admins.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 
 
@@ -52,7 +54,9 @@ import { EmployeeProfileComponent } from './employee/employee-profile/employee-p
    EditAdminProfileComponent,
    ClientProfileComponent,
    LinkInvalidComponent,
-   EmployeeProfileComponent
+   EmployeeProfileComponent,
+   RegisterAdminsComponent,
+   ChangePasswordComponent
 
     
   ],
