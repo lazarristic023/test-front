@@ -22,13 +22,13 @@ import { PasswordlessLoginRedirectiorComponent } from './layout/passwordless-log
 
 const routes: Routes = [ 
   { path: 'login', component: LoginComponent },
-  { path: 'client-register', component: ClientRegisterFormComponent, canActivate: [AuthGuard ]},
+  //{ path: 'client-register', component: ClientRegisterFormComponent, canActivate: [AuthGuard ]},
   { path: 'home', component: HomeComponent , canActivate: [AuthGuard]},
   { path: 'requests', component: AllRequestsComponent , canActivate: [AuthGuard], data: { role: 'ADMINISTRATOR' }},
   { path: 'email', component: EmailComponent , canActivate: [AuthGuard] },
   { path: 'adminProfile', component: AdminProfileComponent , canActivate: [AuthGuard], data: { role: 'ADMINISTRATOR' } },
   { path: 'editAdminProfile', component: EditAdminProfileComponent , canActivate: [AuthGuard] },
-  //{ path: 'client-register', component: ClientRegisterFormComponent },
+  { path: 'client-register', component: ClientRegisterFormComponent },
   //{ path: 'home', component: HomeComponent },
   //{ path: 'requests', component: AllRequestsComponent },
   { path: 'client-profile', component: ClientProfileComponent, canActivate: [AuthGuard], data: { role: 'CLIENT' } },

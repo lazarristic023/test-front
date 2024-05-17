@@ -27,13 +27,12 @@ export class LoginComponent {
   //constructor(private authService: AuthService, private router: Router, private requestService: RequestService) { }
   
   userForm = new FormGroup({
-    username: new FormControl('', [Validators.required]),
+    email: new FormControl('', [Validators.required]),
     password: new FormControl('', [Validators.required]),
   });
 
   user:User={
     id: 0,
-    username: '',
     email: '',
     password: '',
     role: Role.ADMINISTRATOR,
@@ -52,7 +51,6 @@ export class LoginComponent {
     lastName: '',
     firstLogging: false,
     id: 0,
-    username: '',
     email: '',
     password: '',
     role: Role.ADMINISTRATOR,
@@ -67,7 +65,6 @@ export class LoginComponent {
     lastName: '',
     firstLogging: false,
     id: 0,
-    username: '',
     email: '',
     password: '',
     role: Role.EMPLOYEE,
@@ -83,7 +80,7 @@ export class LoginComponent {
 
   LogIn() {
     const user: any = {
-      username: this.userForm.value.username || '',
+      email: this.userForm.value.email || '',
 
       password: this.userForm.value.password || '',
     };
@@ -107,7 +104,7 @@ export class LoginComponent {
             if(this.isEmailChecked(id)){
               this.router.navigate(['home']);
             }else{
-              alert("You cannot login")
+              //alert("You cannot login")
             }
 
         } else {

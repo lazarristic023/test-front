@@ -103,8 +103,8 @@ export class AuthService {
   }
 
   getUsername(): string {
-    console.log("ooooo",this.userClaims.username);
-    return this.userClaims.username;
+    console.log("ooooo",this.userClaims.email);
+    return this.userClaims.email;
     
   }
 

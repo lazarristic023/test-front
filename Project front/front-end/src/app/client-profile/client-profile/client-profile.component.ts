@@ -68,7 +68,7 @@ export class ClientProfileComponent implements OnInit {
     }
     else {
       this.fcName = "First name:";
-      this.surPIB = "Last PIB:";
+      this.surPIB = "Last name:";
       this.crAddr = "Residential address:";
       this.clType = "INDIVIDUAL";
     }
