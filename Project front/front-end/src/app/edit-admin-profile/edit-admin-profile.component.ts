@@ -14,7 +14,6 @@ export class EditAdminProfileComponent {
   admin: Administrator = {
     firstName: '',
     lastName: '',
-    username: '',
     email: '',
     password: '',
     isPredefined: false,
