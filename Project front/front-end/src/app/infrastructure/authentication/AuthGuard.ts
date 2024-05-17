@@ -1,4 +1,4 @@
-import { CanActivate, Router } from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivate, Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { AuthService } from './auth.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
@@ -19,7 +19,8 @@ export class AuthGuard implements CanActivate {
     password: ''
   };
 
-  canActivate(): Observable<boolean> {
+  canActivate(route: ActivatedRouteSnapshot): Observable<boolean> {
+    const requiredRole = route.data['role'];
     if (this.authService.isLogged()) {
       const accessToken = localStorage.getItem('token');
       if (this.jwtHelper.isTokenExpired(accessToken)) {
@@ -37,20 +38,28 @@ export class AuthGuard implements CanActivate {
           map((res) => {
             localStorage.setItem('token', res.refreshToken);
             console.log('Vraceni novi token: ', localStorage.getItem('token'));
-            return true;
+            return this.isAuthorized(requiredRole);
           }),
           catchError((err) => {
-            console.log("Errro: ",err)
-            //this.router.navigate(['/login']);
+            console.log("Error: ", err)
+            this.router.navigate(['/login']);
             return of(false);
           })
         );
       }
-      return of(true);
+      return of(this.isAuthorized(requiredRole));
     } else {
       console.log('Nije ulogovan!');
       this.router.navigate(['/login']);
       return of(false);
     }
+  }
+
+  isAuthorized(requiredRole: string): boolean {
+    if (!requiredRole) {
+      return true; // No specific role required, allow access
+    }
+    const userRole = this.authService.getUserRole();
+    return userRole === requiredRole;
   }
 }

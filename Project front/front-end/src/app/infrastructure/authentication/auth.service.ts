@@ -76,6 +76,8 @@ export class AuthService {
   logout(): void {
     localStorage.clear();
     this.loginSource.next(false);
+    this.userClaims = null;
+    this.access_token = null;
   }
 
   isLogged(): boolean {
@@ -84,7 +86,7 @@ export class AuthService {
   }
 
   getUserRole(): string {
-    return this.userClaims.role;
+    return this.userClaims?.role || '';
   }
   tokenIsPresent() {
     return this.access_token != undefined && this.access_token != null;
