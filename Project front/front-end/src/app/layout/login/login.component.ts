@@ -107,7 +107,7 @@ export class LoginComponent {
             if(this.isEmailChecked(id)){
               this.router.navigate(['home']);
             }else{
-              alert("You cannot login")
+              //alert("You cannot login")
             }
 
         } else {

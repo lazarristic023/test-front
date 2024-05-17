@@ -20,13 +20,13 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
 
 const routes: Routes = [ 
   { path: 'login', component: LoginComponent },
-  { path: 'client-register', component: ClientRegisterFormComponent, canActivate: [AuthGuard ]},
+  //{ path: 'client-register', component: ClientRegisterFormComponent, canActivate: [AuthGuard ]},
   { path: 'home', component: HomeComponent , canActivate: [AuthGuard]},
   { path: 'requests', component: AllRequestsComponent , canActivate: [AuthGuard]},
   { path: 'email', component: EmailComponent , canActivate: [AuthGuard] },
   { path: 'adminProfile', component: AdminProfileComponent , canActivate: [AuthGuard] },
   { path: 'editAdminProfile', component: EditAdminProfileComponent , canActivate: [AuthGuard] },
-  //{ path: 'client-register', component: ClientRegisterFormComponent },
+  { path: 'client-register', component: ClientRegisterFormComponent },
   //{ path: 'home', component: HomeComponent },
   //{ path: 'requests', component: AllRequestsComponent },
   { path: 'client-profile', component: ClientProfileComponent },
