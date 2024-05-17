@@ -1,10 +1,8 @@
 <div class="wrap">
   <form [formGroup]="userForm" class="form-wrap">
     <div class="first-form">
-     
-
       <mat-form-field>
-        <mat-label>Username</mat-label>
+        <mat-label>Email</mat-label>
         <input matInput formControlName="email" type="text" />
       </mat-form-field>
 
@@ -16,6 +14,12 @@
     <button class="button1" type="submit" color="primary" (click)="LogIn()">
       Log in
     </button>
-    
   </form>
+
+  <div class="login-options">
+    <p class="login-text">Log in using just email (Only Standard and Gold clients)</p>
+    <p class="passwordless-login">
+      <a routerLink="/passwordlessLogin">Passwordless Login</a>
+    </p>
+  </div>
 </div>
