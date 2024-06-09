@@ -27,7 +27,7 @@ const routes: Routes = [
   { path: 'requests', component: AllRequestsComponent , canActivate: [AuthGuard], data: { role: 'ADMINISTRATOR' }},
   { path: 'email', component: EmailComponent , canActivate: [AuthGuard] },
   { path: 'adminProfile', component: AdminProfileComponent , canActivate: [AuthGuard], data: { role: 'ADMINISTRATOR' } },
-  { path: 'editAdminProfile', component: EditAdminProfileComponent , canActivate: [AuthGuard] },
+  { path: 'editAdminProfile', component: EditAdminProfileComponent , canActivate: [AuthGuard], data: { role: 'ADMINISTRATOR' } },
   { path: 'client-register', component: ClientRegisterFormComponent },
   //{ path: 'home', component: HomeComponent },
   //{ path: 'requests', component: AllRequestsComponent },
