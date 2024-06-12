@@ -32,7 +32,7 @@ const routes: Routes = [
   //{ path: 'home', component: HomeComponent },
   //{ path: 'requests', component: AllRequestsComponent },
   { path: 'client-profile', component: ClientProfileComponent, canActivate: [AuthGuard], data: { role: 'CLIENT' } },
-  { path: 'successfully/:email/:id/:expiry/:token', component: EmailComponent },
+  { path: 'confirmAccount', component: EmailComponent },
   {path: 'email-link-invalid', component:LinkInvalidComponent},
   {path:'employeeProfile',component:EmployeeProfileComponent},
   { path: 'createAdmin', component: RegisterAdminsComponent , canActivate: [AuthGuard] },

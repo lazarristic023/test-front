@@ -12,9 +12,10 @@ import { MatInput, MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButton, MatButtonModule } from '@angular/material/button';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { DateAdapter } from '@angular/material/core';
+import { DateAdapter, MatPseudoCheckboxModule } from '@angular/material/core';
 
 import { MatSelectModule } from '@angular/material/select';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -71,6 +72,7 @@ import { PasswordlessLoginRedirectiorComponent } from './layout/passwordless-log
     MatInputModule,
     MatFormFieldModule,
     MatButtonModule,
+    MatCheckboxModule,
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,

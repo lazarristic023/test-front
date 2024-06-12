@@ -8,6 +8,8 @@ import { Role, User } from 'src/app/model/user.model';
 import { Administrator } from 'src/app/model/administrator.model';
 import { Employee } from 'src/app/model/employee.model';
 import { AdminProfileService } from 'src/app/service/admin-profile.service';
+import { UserTokenState } from 'src/app/model/userTokenState.model';
+import { TfaCodeVerificationRequest } from 'src/app/model/tfaCodeVerificationRequest.model';
 
 @Component({
   selector: 'app-login',
@@ -23,6 +25,10 @@ export class LoginComponent {
   role: String = ""
   emailChecked: boolean = false
   request!: Requestt
+  otpCode: string = ''
+  isTfaEnabled: boolean = false
+
+
 
   //constructor(private authService: AuthService, private router: Router, private requestService: RequestService) { }
   
@@ -93,8 +99,13 @@ export class LoginComponent {
           this.router.navigate(['home'])*/
 
     this.authService.login(user).subscribe({
-      next: (res) => {
-        console.log('successfull', res)
+      next: (userTokenState: UserTokenState) => {
+        console.log('successfull', userTokenState)
+
+        if (userTokenState.tfaEnabled && !userTokenState.accessToken) {
+          this.isTfaEnabled = true;
+          return
+        }
 
         const id = this.authService.getUserId();
         this.role = this.authService.getUserRole();
@@ -102,6 +113,7 @@ export class LoginComponent {
         if (this.role == "CLIENT") {
           console.log('clieent')
             if(this.isEmailChecked(id)){
+
               this.router.navigate(['home']);
             }else{
               //alert("You cannot login")
@@ -175,5 +187,25 @@ export class LoginComponent {
         console.error('Error loading admin data', err);
       }
     });
+  }
+
+  verifyTfa() {
+    const verifyRequest: TfaCodeVerificationRequest = {
+      email: this.userForm.value.email as string,
+      code: this.otpCode
+    };
+    this.authService.verifyTfaCode(verifyRequest)
+      .subscribe({
+        next: (response) => {
+
+          localStorage.setItem('token', response.accessToken as string);
+          localStorage.setItem('refreshToken', response.refreshToken as string);
+
+          this.authService.setUserClaims();
+          this.authService.setAccessToken(response.accessToken as string);
+          this.authService.setLoginSource(true);
+          this.router.navigate(['home']);
+        }
+      });
   }
 }

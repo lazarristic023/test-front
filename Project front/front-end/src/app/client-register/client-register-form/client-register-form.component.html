@@ -71,6 +71,12 @@
           </mat-select>
         </mat-form-field>
         
+        <div class="checkbox-container">
+          <mat-checkbox formControlName="isTfaEnabled" class="two-factor-checkbox">
+            Enable Two-Factor Authentication
+          </mat-checkbox>
+        </div>
+        
   
         <button type="submit" class="button1" (click)="register()">Register</button>
       </div>
