@@ -4,7 +4,7 @@ export class CommercialRequest {
     startDate: Date | undefined;
     endDate: Date | undefined;
     clientId: number | undefined;
-    isAccepted: boolean | undefined;
+    accepted: boolean | undefined;
   }
     
   

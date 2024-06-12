@@ -162,7 +162,7 @@ export class AuthService {
       Authorization: 'Bearer ' + token,
       'Content-Type': 'application/json',
     });
-    return this.http.get<Boolean>('http://localhost:8081/api/authentication/isEmailChecked/'+ id ,{headers});
+    return this.http.get<Boolean>('https://localhost:8081/api/authentication/isEmailChecked/'+ id ,{headers});
   }
 
   sendLoginLink(email: string): Observable<boolean> {
