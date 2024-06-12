@@ -11,7 +11,7 @@ import { CommercialRequest } from '../model/commercial-request.model';
 })
 export class ClientService {
 
-  private apiUrl = 'http://localhost:8081/api'; // prilagodite URL-u vašeg backend-a
+  private apiUrl = 'https://localhost:8081/api'; // prilagodite URL-u vašeg backend-a
 
   constructor(private http: HttpClient) { }
 

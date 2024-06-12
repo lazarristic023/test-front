@@ -20,7 +20,7 @@ export class RequestService {
       Authorization: 'Bearer ' + token,
       'Content-Type': 'application/json',
     });
-    return this.http.get<[]>('http://localhost:8081/api/requests/getAll' ,{headers});
+    return this.http.get<[]>('https://localhost:8081/api/requests/getAll' ,{headers});
   }
 
   acceptRequest(request:Requestt): Observable<Requestt> {
@@ -29,7 +29,7 @@ export class RequestService {
       Authorization: 'Bearer ' + token,
       'Content-Type': 'application/json',
     });
-    return this.http.put<Requestt>('http://localhost:8081/api/requests/accept',request ,{headers});
+    return this.http.put<Requestt>('https://localhost:8081/api/requests/accept',request ,{headers});
   }
 
   rejectRequest(request:Requestt,reason:String): Observable<Requestt> {
@@ -38,7 +38,7 @@ export class RequestService {
       Authorization: 'Bearer ' + token,
       'Content-Type': 'application/json',
     });
-    return this.http.put<Requestt>('http://localhost:8081/api/requests/reject/'+reason,request ,{headers});
+    return this.http.put<Requestt>('https://localhost:8081/api/requests/reject/'+reason,request ,{headers});
   }
 
   getRequestByUsername(username:string): Observable<Requestt> {
@@ -47,7 +47,7 @@ export class RequestService {
       Authorization: 'Bearer ' + token,
       'Content-Type': 'application/json',
     });
-    return this.http.get<Requestt>('http://localhost:8081/api/requests/getByUsername/'+username ,{headers});
+    return this.http.get<Requestt>('https://localhost:8081/api/requests/getByUsername/'+username ,{headers});
   }
   
 }

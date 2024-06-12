@@ -27,7 +27,7 @@ export class AuthService {
   login(loginRequest: Credential): Observable<boolean> {
     console.log('u servisu',loginRequest)
     return this.http
-      .post<any>('http://localhost:8081/api/authentication/login', loginRequest)
+      .post<any>('https://localhost:8081/api/authentication/login', loginRequest)
       .pipe(
         map((res) => {
           console.log('Login success');
@@ -83,7 +83,7 @@ export class AuthService {
       Authorization: 'Bearer ' + token,
       'Content-Type': 'application/json',
     });
-    return this.http.get<Boolean>('http://localhost:8081/api/authentication/isEmailChecked/'+ id ,{headers});
+    return this.http.get<Boolean>('https://localhost:8081/api/authentication/isEmailChecked/'+ id ,{headers});
   }
  
 }
