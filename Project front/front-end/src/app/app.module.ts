@@ -40,7 +40,7 @@ import { RegisterAdminsComponent } from './register-admins/register-admins.compo
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { PasswordlessLoginComponent } from './layout/passwordless-login/passwordless-login.component';
 import { PasswordlessLoginRedirectiorComponent } from './layout/passwordless-login-redirectior/passwordless-login-redirectior.component';
-
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 @NgModule({
@@ -88,7 +88,8 @@ import { PasswordlessLoginRedirectiorComponent } from './layout/passwordless-log
     MatTableModule,
     MatDialogModule,
     MatTabsModule,
-    MatRadioModule
+    MatRadioModule,
+    MatSnackBarModule
     
   ],
   providers: [
