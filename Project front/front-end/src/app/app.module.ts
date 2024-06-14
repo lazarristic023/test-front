@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './layout/navbar/navbar.component';
 import { LoginComponent } from './layout/login/login.component';
+import { MatCardModule } from '@angular/material/card';
 
 import { JwtModule } from '@auth0/angular-jwt';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
@@ -19,6 +20,9 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
+
 
 import { FormsModule } from '@angular/forms';
 import { MatTableModule } from '@angular/material/table';
@@ -40,6 +44,10 @@ import { RegisterAdminsComponent } from './register-admins/register-admins.compo
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { PasswordlessLoginComponent } from './layout/passwordless-login/passwordless-login.component';
 import { PasswordlessLoginRedirectiorComponent } from './layout/passwordless-login-redirectior/passwordless-login-redirectior.component';
+import { ChangePasswordFormComponent } from './change-password-form/change-password-form.component';
+import { ResetPasswordFormComponent } from './reset-password-form/reset-password-form.component';
+import { ResetPasswordPageComponent } from './reset-password-page/reset-password-page.component';
+import { BlockUsersPageComponent } from './block-users-page/block-users-page.component';
 
 
 
@@ -61,7 +69,11 @@ import { PasswordlessLoginRedirectiorComponent } from './layout/passwordless-log
    RegisterAdminsComponent,
    ChangePasswordComponent,
    PasswordlessLoginComponent,
-   PasswordlessLoginRedirectiorComponent
+   PasswordlessLoginRedirectiorComponent,
+   ChangePasswordFormComponent,
+   ResetPasswordFormComponent,
+   ResetPasswordPageComponent,
+   BlockUsersPageComponent
 
     
   ],
@@ -73,6 +85,9 @@ import { PasswordlessLoginRedirectiorComponent } from './layout/passwordless-log
     MatFormFieldModule,
     MatButtonModule,
     MatCheckboxModule,
+    MatCardModule,
+    MatIconModule,
+    MatTooltipModule,
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
