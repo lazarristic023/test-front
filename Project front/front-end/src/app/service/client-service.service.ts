@@ -153,4 +153,8 @@ export class ClientService {
     return this.http.post<CommercialRequest>(`${this.apiUrl}/commercial-request/create`, request);
   }
 
+
+  deleteClientData(id: number): Observable<number> {
+    return this.http.delete<number>(`${this.apiUrl}/users/deleteClient/`+id);
+  }
 }

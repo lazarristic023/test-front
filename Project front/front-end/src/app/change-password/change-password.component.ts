@@ -81,6 +81,7 @@ employee:Employee={
           alert('Password updated successifully');
           this.router.navigate(['/adminProfile']);
         },
+        
         (error:any) => {
           alert('Error changing password: ' + error.message);
         }
