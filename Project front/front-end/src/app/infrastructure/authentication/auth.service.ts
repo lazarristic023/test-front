@@ -179,11 +179,11 @@ export class AuthService {
     });
     //console.log(token)
     //console.log(request.userId)
-    return this.http.patch<any>('http://localhost:8081/api/users/changePassword', request, {headers}); 
+    return this.http.patch<any>('https://localhost:8081/api/users/changePassword', request, {headers}); 
   }
 
   sendResetPasswordLink(email: string): Observable<any> {
-    return this.http.get<any>('http://localhost:8081/api/authentication/sendResetPasswordLink', {
+    return this.http.get<any>('https://localhost:8081/api/authentication/sendResetPasswordLink', {
       params: {
         email: email
       },
@@ -192,7 +192,7 @@ export class AuthService {
   }
 
   resetPasswordRedirect(token: string): Observable<UserTokenState> {
-    return this.http.get<UserTokenState>('http://localhost:8081/api/authentication/resetPasswordRedirect', {
+    return this.http.get<UserTokenState>('https://localhost:8081/api/authentication/resetPasswordRedirect', {
       params: {
         token: token
       }
@@ -200,7 +200,7 @@ export class AuthService {
   }
 
   resetPassword(request: ResetPasswordRequest) : Observable<any> {
-    return this.http.post<any>('http://localhost:8081/api/authentication/resetPassword', request); 
+    return this.http.post<any>('https://localhost:8081/api/authentication/resetPassword', request); 
   }
   
 

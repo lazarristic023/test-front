@@ -98,7 +98,7 @@ export class AdminProfileService {
     return this.http.post<Employee>(`${this.apiUrl}/users/registerEmployee`, employee,{headers});
   }
 
-  updateUser(user: User): Observable<User> {
+  blockOrUnblock(user: User): Observable<User> {
     const token = this.jwtHelper.tokenGetter();
     const headers = new HttpHeaders({
       Authorization: 'Bearer ' + token,
@@ -106,7 +106,7 @@ export class AdminProfileService {
     });
     //console.log(headers);
     //console.log(user)
-    return this.http.put<User>(`${this.apiUrl}/users/blockOrUnblock`, user, {headers});
+    return this.http.put<User>(`https://localhost:8081/api/users/blockOrUnblock`, user, {headers});
   }
 
   getAllUsers(): Observable<User[]> {
@@ -115,7 +115,7 @@ export class AdminProfileService {
       Authorization: 'Bearer ' + token,
       'Content-Type': 'application/json',
     });
-    return this.http.get<User[]>(`${this.apiUrl}/users/getAllUsers`, {headers});
+    return this.http.get<User[]>(`https://localhost:8081/api/users/getAllUsers`, {headers});
   }
  
 }

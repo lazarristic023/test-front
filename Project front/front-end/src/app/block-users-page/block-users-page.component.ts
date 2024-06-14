@@ -30,7 +30,7 @@ export class BlockUsersPageComponent implements OnInit {
 
   updateUser(user: User): void {
     user.blocked = !user.blocked; // Toggle the blocked status
-    this.adminService.updateUser(user).subscribe({
+    this.adminService.blockOrUnblock(user).subscribe({
       next: () => this.loadUsers(), // Refresh the table after updating
       error: (err) => {
         console.error('Error updating user:', err);
