@@ -37,7 +37,7 @@ export class AuthService {
   login(loginRequest: Credential): Observable<UserTokenState> {
     console.log('u servisu',loginRequest)
     return this.http
-      .post<UserTokenState>('http://localhost:8081/api/authentication/login', loginRequest)
+      .post<UserTokenState>('https://localhost:8081/api/authentication/login', loginRequest)
       .pipe(
         map((res) => {
           console.log('Login success');
@@ -73,7 +73,7 @@ export class AuthService {
 
   verifyTfaCode(verificationRequest: TfaCodeVerificationRequest) {
     return this.http.post<UserTokenState>
-    (`http://localhost:8081/api/authentication/verifyTfaCode`, verificationRequest);
+    (`https://localhost:8081/api/authentication/verifyTfaCode`, verificationRequest);
   }
 
   verifyAccount(email: string, id: number, token: string, expiry: number): Observable<UserTokenState> {
@@ -85,7 +85,7 @@ export class AuthService {
     .set('expiry', expiry.toString());
     
     return this.http.get<UserTokenState>
-    (`http://localhost:8081/api/authentication/verify`, {params});
+    (`https://localhost:8081/api/authentication/verify`, {params});
   }
 
   setUserClaims(): void {
@@ -102,7 +102,7 @@ export class AuthService {
 
   passwordlessLogin(token: string): Observable<UserTokenState> {
     // Make an HTTP request to the server to exchange the token for access and refresh tokens
-    return this.http.get<UserTokenState>('http://localhost:8081/api/authentication/passwordlessLogin', {
+    return this.http.get<UserTokenState>('https://localhost:8081/api/authentication/passwordlessLogin', {
       params: {
         token: token
       }
@@ -148,7 +148,7 @@ export class AuthService {
     console.log("POzvana metoda");
     console.log("Refresh token", refreshTokenRequest.refreshToken);
     console.log("Access token", localStorage.getItem('token'));
-    return this.http.post<RefreshTokenRequest>('http://localhost:8081/api/authentication/refresh-token', refreshTokenRequest);
+    return this.http.post<RefreshTokenRequest>('https://localhost:8081/api/authentication/refresh-token', refreshTokenRequest);
   }
   
  
@@ -163,11 +163,11 @@ export class AuthService {
       Authorization: 'Bearer ' + token,
       'Content-Type': 'application/json',
     });
-    return this.http.get<Boolean>('http://localhost:8081/api/authentication/isEmailChecked/'+ id ,{headers});
+    return this.http.get<Boolean>('https://localhost:8081/api/authentication/isEmailChecked/'+ id ,{headers});
   }
 
   sendLoginLink(email: string): Observable<boolean> {
-    const url = `http://localhost:8081/api/authentication/sendPasswordlessLoginLink?email=${encodeURIComponent(email)}`;
+    const url = `https://localhost:8081/api/authentication/sendPasswordlessLoginLink?email=${encodeURIComponent(email)}`;
     return this.http.get<boolean>(url);
   }
 

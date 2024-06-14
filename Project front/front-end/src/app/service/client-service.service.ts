@@ -13,7 +13,7 @@ import { AuthService } from '../infrastructure/authentication/auth.service';
 })
 export class ClientService {
 
-  private apiUrl = 'http://localhost:8081/api'; // prilagodite URL-u vašeg backend-a
+  private apiUrl = 'https://localhost:8081/api'; // prilagodite URL-u vašeg backend-a
   private loginSource = new BehaviorSubject<boolean>(false);
   public loginObserver = this.loginSource.asObservable();
 

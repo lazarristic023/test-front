@@ -59,6 +59,12 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "ideationapp:build",
+            "ssl": true,
+            "sslKey": "src/assets/certificates/6877445b-e816-42fa-bb10-7cb449c7428e.key",
+            "sslCert": "src/assets/certificates/6877445b-e816-42fa-bb10-7cb449c7428e.crt"
+          },
           "configurations": {
             "production": {
               "browserTarget": "front-end:build:production"
