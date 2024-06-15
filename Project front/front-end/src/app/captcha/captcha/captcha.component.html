@@ -1,0 +1,5 @@
+<form [formGroup]="aFormGroup" (ngSubmit)="onSubmit()">
+    <div id="recaptcha-container"></div>
+    <button type="submit" [disabled]="!aFormGroup.valid">Submit</button>
+  </form>
+  
