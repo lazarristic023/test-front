@@ -17,6 +17,7 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
 import { PasswordlessLoginComponent } from './layout/passwordless-login/passwordless-login.component';
 import { PasswordlessLoginRedirectiorComponent } from './layout/passwordless-login-redirectior/passwordless-login-redirectior.component';
 import { CaptchaComponent } from './captcha/captcha/captcha.component';
+import { VPNComponent } from './vpn/vpn/vpn.component';
 
 
 
@@ -40,7 +41,8 @@ const routes: Routes = [
   { path: 'changePassword', component: ChangePasswordComponent , canActivate: [AuthGuard] },
   { path: 'passwordlessLogin', component: PasswordlessLoginComponent },
   { path: 'redirectPasswordlessLogin', component: PasswordlessLoginRedirectiorComponent },
-  {path: 'captcha',component:CaptchaComponent}
+  {path: 'captcha',component:CaptchaComponent},
+  {path: 'vpn',component:VPNComponent},
 
 
 ];

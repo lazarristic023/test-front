@@ -11,12 +11,14 @@ export class VPNService {
 
   constructor(private http: HttpClient, private jwtHelper: JwtHelperService) { }
 
-  fetchVPNMessage(): Observable<String> {
+  fetchVPNMessage(): Observable<any> {
     const token = this.jwtHelper.tokenGetter();
     const headers = new HttpHeaders({
       Authorization: 'Bearer ' + token,
       'Content-Type': 'application/json',
     });
-    return this.http.get<String>('https://localhost:8081/api/authentication/fetch-message' ,{headers});
+    //'https://localhost:8081/api/authentication/fetch-message'
+    return this.http.get('https://localhost:8081/api/authentication/fetch-message', { headers, responseType: 'text' as 'json' });
   }
+ 
 }
