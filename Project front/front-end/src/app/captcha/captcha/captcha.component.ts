@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, Renderer2 } from '@angular/core';
+import { AfterViewInit, Component, NgZone, OnInit, Renderer2 } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgxCaptchaModule } from 'ngx-captcha';
@@ -11,9 +11,14 @@ declare var grecaptcha: any;
 })
 export class CaptchaComponent implements OnInit,AfterViewInit {
   aFormGroup!: FormGroup;
-  secretKey:string="6LeUcfcpAAAAAK6rHf98i4MX_KP93IzGg0ufdNBN"
-  siteKey:string="6LeUcfcpAAAAAEIKKquyucK8yDAX2VTZLMMd0Lu2"
-  constructor(private formBuilder: FormBuilder,private router:Router,private renderer: Renderer2) {
+  siteKey: string = "6LdhrvkpAAAAAJu40yxWqiGisoHSwbH_i4DVnL9R";
+
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private renderer: Renderer2,
+    private ngZone: NgZone
+  ) {
     this.aFormGroup = this.formBuilder.group({
       recaptcha: ['', Validators.required]
     });
@@ -26,17 +31,24 @@ export class CaptchaComponent implements OnInit,AfterViewInit {
   }
 
   ngAfterViewInit() {
-    grecaptcha.enterprise.ready(() => {
-      grecaptcha.enterprise.render('recaptcha-container', {
-        'sitekey': this.siteKey,
-        'size': 'normal', 
-        'theme': 'light', 
-        'callback': (response: string) => {
-          this.onCaptchaSuccess(response);
-        }
+    this.ngZone.runOutsideAngular(() => {
+      grecaptcha.enterprise.ready(() => {
+        this.ngZone.run(() => {
+          grecaptcha.enterprise.render('recaptcha-container', {
+            'sitekey': this.siteKey,
+            'size': 'normal',
+            'theme': 'light',
+            'callback': (response: string) => {
+              this.ngZone.run(() => {
+                this.onCaptchaSuccess(response);
+              });
+            }
+          });
+        });
       });
     });
   }
+
   onCaptchaSuccess(response: string) {
     if (response) {
       this.aFormGroup.controls['recaptcha'].setValue(response);
@@ -46,7 +58,7 @@ export class CaptchaComponent implements OnInit,AfterViewInit {
 
   onSubmit() {
     if (this.aFormGroup.valid) {
-      // Rukovanje submit događajem
+      // Handle submit event
     }
   }
 }
