@@ -76,6 +76,7 @@ import { NgxCaptchaModule } from 'ngx-captcha';
    ResetPasswordFormComponent,
    BlockUsersPageComponent,
    CaptchaComponent,
+   ResetPasswordPageComponent
   ],
     
 
