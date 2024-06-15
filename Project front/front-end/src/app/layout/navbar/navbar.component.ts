@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../infrastructure/authentication/auth.service';
+import { ClientService } from 'src/app/service/client-service.service';
 
 @Component({
   selector: 'app-navbar',
@@ -10,9 +11,13 @@ import { AuthService } from '../../infrastructure/authentication/auth.service';
 export class NavbarComponent implements OnInit{
   isLogged : boolean=false
   userRole: string = '';
+  isDeleted : number=0;
+  userId : number =0;
+
   constructor(
     private router: Router,
-    private authService: AuthService 
+    private authService: AuthService ,
+    private clientService: ClientService
   ) {
     this.authService.loginObserver.subscribe((val) => {
       this.isLogged = val;
@@ -20,6 +25,7 @@ export class NavbarComponent implements OnInit{
       
         if (this.isLogged) {
           this.userRole = this.authService.getUserRole()
+          this.userId = this.authService.getUserId()
           console.log("USER ROLE : ",this.userRole);
 
         }
@@ -39,6 +45,19 @@ export class NavbarComponent implements OnInit{
     });
 
     
+  }
+
+  deleteData(){
+    this.clientService.deleteClientData(this.userId).subscribe(
+      (res) => {
+        if(res == 1){
+            alert("You successifuly deleted your data!");
+        }else{
+          alert("You cant delete your data, becuase package is not gold!");
+
+        }
+     
+    });
   }
   onLogout() {
     this.authService.logout();
