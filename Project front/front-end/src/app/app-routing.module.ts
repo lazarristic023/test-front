@@ -45,6 +45,7 @@ const routes: Routes = [
   { path: 'redirectPasswordlessLogin', component: PasswordlessLoginRedirectiorComponent },
   { path: 'changePasswordForm', component: ChangePasswordFormComponent, canActivate: [AuthGuard] },
   { path: 'resetPasswordForm', component: ResetPasswordFormComponent },
+  { path: 'resetPasswordPage', component: ResetPasswordPageComponent },
   { path: 'blockUsersPage', component: BlockUsersPageComponent , canActivate: [AuthGuard], data: { role: 'ADMINISTRATOR' } },
   {path: 'captcha',component:CaptchaComponent},
   {path: 'vpn',component:VPNComponent},
