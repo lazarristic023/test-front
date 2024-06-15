@@ -41,6 +41,9 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
 import { PasswordlessLoginComponent } from './layout/passwordless-login/passwordless-login.component';
 import { PasswordlessLoginRedirectiorComponent } from './layout/passwordless-login-redirectior/passwordless-login-redirectior.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { CaptchaComponent } from './captcha/captcha/captcha.component';
+import { NgxCaptchaModule } from 'ngx-captcha';
+
 
 
 @NgModule({
@@ -61,7 +64,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
    RegisterAdminsComponent,
    ChangePasswordComponent,
    PasswordlessLoginComponent,
-   PasswordlessLoginRedirectiorComponent
+   PasswordlessLoginRedirectiorComponent,
+   CaptchaComponent
 
     
   ],
@@ -89,7 +93,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatDialogModule,
     MatTabsModule,
     MatRadioModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    NgxCaptchaModule,
     
   ],
   providers: [
