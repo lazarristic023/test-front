@@ -52,6 +52,7 @@ export class NavbarComponent implements OnInit{
       (res) => {
         if(res == 1){
             alert("You successifuly deleted your data!");
+            this.router.navigate(['login']);
         }else{
           alert("You cant delete your data, becuase package is not gold!");
 
