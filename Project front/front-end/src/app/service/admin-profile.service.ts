@@ -109,14 +109,7 @@ export class AdminProfileService {
   }
 
   readAlert(id: number): Observable<void> {
-    return this.http.put<void>(`${this.apiUrl}/alerts/read-alert/` + id, null)
-      .pipe(
-        catchError((error: any) => {
-          console.error('Error reading alert:', error);
-          // Možete ovde dodati logiku za prikazivanje greške korisniku
-          return throwError(error);
-        })
-      );
+    return this.http.put<void>(`${this.apiUrl}/alerts/read-alert/` + id, null);
   }
  
 }

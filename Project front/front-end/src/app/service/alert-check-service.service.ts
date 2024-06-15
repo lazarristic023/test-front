@@ -30,8 +30,8 @@ export class AlertCheckService {
             if (alert.id !== undefined) {
               this.i = alert.id;
             }
-            this.alertService.showSnackbar(this.mes, 'Read', 3000, () => {
-                this.markAlertAsSeen(this.i);
+            this.alertService.showSnackbar(this.mes, 'Mark as read', 3000, () => {
+              this.adminProfileService.readAlert(this.i).subscribe();
               }); // Prikaz alert-a 10 sekundi
             //this.markAlertAsSeen(this.i); // Obeleži kao pročitano
   
@@ -42,8 +42,4 @@ export class AlertCheckService {
       .subscribe();
   }
 
-  private markAlertAsSeen(alertId: number) {
-    // Implementiraj logiku za obeležavanje upozorenja kao pročitano, ako je potrebno
-    this.adminProfileService.readAlert(alertId);
-  }
 }
