@@ -14,7 +14,7 @@ export class AppComponent implements OnInit {
   constructor(private alertCheckService: AlertCheckService, private authService: AuthService) {}
 
   ngOnInit(): void {
-    if(this.authService.getUserRole() == 'ADMINISTRATOR') {
+    if(this.authService.getUserRole() == 'ADMINISTRATOR' && this.authService.loginObserver) {
       this.alertCheckService.startCheckingForAlerts();
     }
   }

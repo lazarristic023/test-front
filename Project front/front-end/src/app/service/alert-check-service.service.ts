@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { interval } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import { interval, of } from 'rxjs';
+import { concatMap, delay, switchMap } from 'rxjs/operators';
 import { AdminProfileService } from './admin-profile.service';
 import { AlertService } from './alert-service.service';
 
@@ -19,22 +19,27 @@ export class AlertCheckService {
   ) {}
 
   startCheckingForAlerts() {
-    interval(60000) // Proveravaj svakih 60 sekundi
+    interval(30000) // Proveravaj svakih 20 sekundi
       .pipe(
-        switchMap(() => this.adminProfileService.getAllUnreadAlerts())
+        switchMap(() => this.adminProfileService.getAllUnreadAlerts()), // Dobavi sve nepročitane alerte
+        concatMap(alerts => of(...alerts).pipe( // Sekvencijalno obradi svaki alert
+          concatMap(alert => {
+            if (alert.message !== undefined) {
+              this.mes = alert.message;
+            }
+            if (alert.id !== undefined) {
+              this.i = alert.id;
+            }
+            this.alertService.showSnackbar(this.mes, 'Read', 3000, () => {
+                this.markAlertAsSeen(this.i);
+              }); // Prikaz alert-a 10 sekundi
+            //this.markAlertAsSeen(this.i); // Obeleži kao pročitano
+  
+            return of(alert).pipe(delay(3000)); // Sačekaj 10 sekundi pre nego što nastavi sa sledećim alert-om
+          })
+        ))
       )
-      .subscribe(alerts => {
-        alerts.forEach(alert => {
-            if(alert.message !== undefined) {
-                this.mes = alert.message;
-            }
-            if(alert.id !== undefined) {
-                this.i = alert.id;
-            }
-            this.alertService.showSnackbar(this.mes);
-            this.markAlertAsSeen(this.i); // Obeleži kao pročitano
-        });
-      });
+      .subscribe();
   }
 
   private markAlertAsSeen(alertId: number) {
