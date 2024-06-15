@@ -40,6 +40,8 @@ import { RegisterAdminsComponent } from './register-admins/register-admins.compo
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { PasswordlessLoginComponent } from './layout/passwordless-login/passwordless-login.component';
 import { PasswordlessLoginRedirectiorComponent } from './layout/passwordless-login-redirectior/passwordless-login-redirectior.component';
+import { CaptchaComponent } from './captcha/captcha/captcha.component';
+import { NgxCaptchaModule } from 'ngx-captcha';
 
 
 
@@ -61,7 +63,8 @@ import { PasswordlessLoginRedirectiorComponent } from './layout/passwordless-log
    RegisterAdminsComponent,
    ChangePasswordComponent,
    PasswordlessLoginComponent,
-   PasswordlessLoginRedirectiorComponent
+   PasswordlessLoginRedirectiorComponent,
+   CaptchaComponent
 
     
   ],
@@ -88,7 +91,9 @@ import { PasswordlessLoginRedirectiorComponent } from './layout/passwordless-log
     MatTableModule,
     MatDialogModule,
     MatTabsModule,
-    MatRadioModule
+    MatRadioModule,
+    ReactiveFormsModule,
+    NgxCaptchaModule,
     
   ],
   providers: [

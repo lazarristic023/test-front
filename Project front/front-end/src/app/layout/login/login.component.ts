@@ -115,13 +115,14 @@ export class LoginComponent {
             if(this.isEmailChecked(id)){
 
               this.router.navigate(['home']);
+             
             }else{
-              //alert("You cannot login")
+              alert("You cannot login, email not checked")
             }
 
-        } else {
-          console.log('nije klijent')
-          this.router.navigate(['home']);
+        } 
+        if (this.role == "EMPLOYEE") {
+          this.router.navigate(['captcha']);
         }
 
         if(this.authService.getUserRole()[0] == 'ADMINISTRATOR' ){

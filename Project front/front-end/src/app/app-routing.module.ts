@@ -16,6 +16,7 @@ import { RegisterAdminsComponent } from './register-admins/register-admins.compo
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { PasswordlessLoginComponent } from './layout/passwordless-login/passwordless-login.component';
 import { PasswordlessLoginRedirectiorComponent } from './layout/passwordless-login-redirectior/passwordless-login-redirectior.component';
+import { CaptchaComponent } from './captcha/captcha/captcha.component';
 
 
 
@@ -23,7 +24,7 @@ import { PasswordlessLoginRedirectiorComponent } from './layout/passwordless-log
 const routes: Routes = [ 
   { path: 'login', component: LoginComponent },
   //{ path: 'client-register', component: ClientRegisterFormComponent, canActivate: [AuthGuard ]},
-  { path: 'home', component: HomeComponent , canActivate: [AuthGuard]},
+  { path: 'home', component: HomeComponent, canActivate: [AuthGuard ] },
   { path: 'requests', component: AllRequestsComponent , canActivate: [AuthGuard], data: { role: 'ADMINISTRATOR' }},
   { path: 'email', component: EmailComponent , canActivate: [AuthGuard] },
   { path: 'adminProfile', component: AdminProfileComponent , canActivate: [AuthGuard], data: { role: 'ADMINISTRATOR' } },
@@ -39,6 +40,7 @@ const routes: Routes = [
   { path: 'changePassword', component: ChangePasswordComponent , canActivate: [AuthGuard] },
   { path: 'passwordlessLogin', component: PasswordlessLoginComponent },
   { path: 'redirectPasswordlessLogin', component: PasswordlessLoginRedirectiorComponent },
+  {path: 'captcha',component:CaptchaComponent}
 
 
 ];
