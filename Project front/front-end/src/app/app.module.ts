@@ -48,6 +48,8 @@ import { ChangePasswordFormComponent } from './change-password-form/change-passw
 import { ResetPasswordFormComponent } from './reset-password-form/reset-password-form.component';
 import { ResetPasswordPageComponent } from './reset-password-page/reset-password-page.component';
 import { BlockUsersPageComponent } from './block-users-page/block-users-page.component';
+import { CaptchaComponent } from './captcha/captcha/captcha.component';
+import { NgxCaptchaModule } from 'ngx-captcha';
 
 
 
@@ -72,11 +74,10 @@ import { BlockUsersPageComponent } from './block-users-page/block-users-page.com
    PasswordlessLoginRedirectiorComponent,
    ChangePasswordFormComponent,
    ResetPasswordFormComponent,
-   ResetPasswordPageComponent,
-   BlockUsersPageComponent
-
-    
+   BlockUsersPageComponent,
+   CaptchaComponent,
   ],
+    
 
   imports: [
     BrowserModule,
@@ -103,7 +104,9 @@ import { BlockUsersPageComponent } from './block-users-page/block-users-page.com
     MatTableModule,
     MatDialogModule,
     MatTabsModule,
-    MatRadioModule
+    MatRadioModule,
+    ReactiveFormsModule,
+    NgxCaptchaModule,
     
   ],
   providers: [

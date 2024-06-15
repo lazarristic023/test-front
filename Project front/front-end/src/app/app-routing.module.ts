@@ -20,13 +20,16 @@ import { ChangePasswordFormComponent } from './change-password-form/change-passw
 import { ResetPasswordFormComponent } from './reset-password-form/reset-password-form.component';
 import { ResetPasswordPageComponent } from './reset-password-page/reset-password-page.component';
 import { BlockUsersPageComponent } from './block-users-page/block-users-page.component';
+import { CaptchaComponent } from './captcha/captcha/captcha.component';
+import { VPNComponent } from './vpn/vpn/vpn.component';
 
 
 
 
 const routes: Routes = [ 
   { path: 'login', component: LoginComponent },
-  { path: 'home', component: HomeComponent , canActivate: [AuthGuard]},
+  //{ path: 'client-register', component: ClientRegisterFormComponent, canActivate: [AuthGuard ]},
+  { path: 'home', component: HomeComponent, canActivate: [AuthGuard ] },
   { path: 'requests', component: AllRequestsComponent , canActivate: [AuthGuard], data: { role: 'ADMINISTRATOR' }},
   { path: 'email', component: EmailComponent , canActivate: [AuthGuard] },
   { path: 'adminProfile', component: AdminProfileComponent , canActivate: [AuthGuard], data: { role: 'ADMINISTRATOR' } },
@@ -42,13 +45,11 @@ const routes: Routes = [
   { path: 'redirectPasswordlessLogin', component: PasswordlessLoginRedirectiorComponent },
   { path: 'changePasswordForm', component: ChangePasswordFormComponent, canActivate: [AuthGuard] },
   { path: 'resetPasswordForm', component: ResetPasswordFormComponent },
-  { path: 'resetPasswordPage', component: ResetPasswordPageComponent },
   { path: 'blockUsersPage', component: BlockUsersPageComponent , canActivate: [AuthGuard], data: { role: 'ADMINISTRATOR' } },
+  {path: 'captcha',component:CaptchaComponent},
+  {path: 'vpn',component:VPNComponent},
 
-
-
-
-];
+]
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
