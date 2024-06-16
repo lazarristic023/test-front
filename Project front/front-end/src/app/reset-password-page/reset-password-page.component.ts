@@ -39,6 +39,7 @@ export class ResetPasswordPageComponent implements OnInit{
 
     this.authService.resetPasswordRedirect(this.token).subscribe(
       response => {
+        console.log("Uslo u resetPage", response)
         if(response.tfaEnabled) {
           this.isTfaEnabled = true
         }

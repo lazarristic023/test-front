@@ -10,6 +10,7 @@ import { Employee } from 'src/app/model/employee.model';
 import { AdminProfileService } from 'src/app/service/admin-profile.service';
 import { UserTokenState } from 'src/app/model/userTokenState.model';
 import { TfaCodeVerificationRequest } from 'src/app/model/tfaCodeVerificationRequest.model';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -90,76 +91,53 @@ export class LoginComponent {
   LogIn() {
     const user: any = {
       email: this.userForm.value.email || '',
-
       password: this.userForm.value.password || '',
     };
-    console.log("afdsaf")
     
-    /*this.authService.login(user).subscribe( {
-      next:(res)=>{
-          console.log('successfull',res)
- 
-          
-          this.router.navigate(['home'])*/
-
     this.authService.login(user).subscribe({
       next: (userTokenState: UserTokenState) => {
-        console.log('successfull', userTokenState)
-
+        console.log('successful', userTokenState);
+  
         if (userTokenState.tfaEnabled && !userTokenState.accessToken) {
-          console.log("Uslo!!!!!!")
           this.isTfaEnabled = true;
-          return
+          return;
         }
-
+  
         const id = this.authService.getUserId();
         this.role = this.authService.getUserRole();
         
         if (this.role == "CLIENT") {
-          console.log('clieent')
-            if(this.isEmailChecked(id)){
-
+          this.isEmailChecked(id, (emailChecked) => {
+            if (emailChecked) {
               this.router.navigate(['home']);
-             
-            }else{
-              alert("You cannot login, email not checked")
+            } else {
+              alert("You cannot login, email not checked");
             }
-
-        } 
-        if (this.role == "EMPLOYEE") {
+          });
+        } else if (this.role == "EMPLOYEE") {
           this.router.navigate(['captcha']);
+        } else if (this.role == "ADMINISTRATOR") {
+          this.loadAdminData();
+        } else if (this.role == "EMPLOYEE") {
+          this.loadEmployeeData();
         }
-
-        if(this.authService.getUserRole()[0] == 'ADMINISTRATOR' ){
-            this.loadAdminData()
-        }
-        else if(this.authService.getUserRole()[0] == 'EMPLOYEE'){
-              this.loadEmployeeData();
-        }
-
-        this.router.navigate(['home'])
       },
       error: (err) => {
-        console.log('greska', err)
+        console.log('error', err);
       }
     });
   }
+  
+  
 
 
-  isEmailChecked(id: number): Boolean {
-
+  isEmailChecked(id: number, callback: (result: boolean) => void): void {
     this.authService.isEmailChecked(id).subscribe({
-      next: (res) => {
-        this.emailChecked = res as boolean
-      }
-    })
-
-    if (this.emailChecked) {
-      return true
-    } else {
-      return false
-    }
+      next: (res) => callback(res as boolean),
+      error: () => callback(false) // Handle error case if needed
+    });
   }
+  
 
   
   loadAdminData(): void {
